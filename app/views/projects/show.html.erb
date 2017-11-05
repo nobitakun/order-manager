@@ -1,0 +1,49 @@
+<h1><%= @project.name %>の詳細</h1>
+<section>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">項目</th>
+        <th scope="col">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">id</th>
+        <td><%= @project.id %></td>
+      </tr>
+      <tr>
+        <th scope="row">顧名</th>
+        <td><%= @project.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">現郵便番号</th>
+        <td><%= @project.current_postal_code %></td>
+      </tr>
+      <tr>
+        <th scope="row">現住所</th>
+        <td><%= @project.current_adress %></td>
+      </tr>
+      <tr>
+        <th scope="row">現固定番号</th>
+        <td><%= @project.current_phone %></td>
+      </tr>
+      <tr>
+        <th scope="row">建築地住所</th>
+        <td><%= @project.adress %></td>
+      </tr>
+      <tr>
+        <th scope="row">建築地固定電話</th>
+        <td><%= @project.phone %></td>
+      </tr>
+      <tr>
+        <th scope="row">ご主人携帯電話番号</th>
+        <td><%= @project.owner_phone %></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <%= link_to '顧客一覧へ', projects_path, class: 'btn btn-lg btn-secondary' %>
+</section>

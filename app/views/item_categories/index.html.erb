@@ -1,0 +1,23 @@
+<h1>部材カテゴリー一覧</h1>
+
+<section>
+  <% if @item_categories.any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名前</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @item_categories.each do |item_category| %>
+          <tr>
+            <td><%= item_category.id %></td>
+            <td><%= item_category.name %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+</section>

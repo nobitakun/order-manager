@@ -1,0 +1,49 @@
+<h1><%= @partner.name %>の詳細</h1>
+<section>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">項目</th>
+        <th scope="col">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">id</th>
+        <td><%= @partner.id %></td>
+      </tr>
+      <tr>
+        <th scope="row">発注先名</th>
+        <td><%= @partner.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">郵便番号</th>
+        <td><%= @partner.postal_code %></td>
+      </tr>
+      <tr>
+        <th scope="row">住所</th>
+        <td><%= @partner.adress %></td>
+      </tr>
+      <tr>
+        <th scope="row">電話番号</th>
+        <td><%= @partner.phone %></td>
+      </tr>
+      <tr>
+        <th scope="row">FAX番号</th>
+        <td><%= @partner.fax %></td>
+      </tr>
+      <tr>
+        <th scope="row">担当者</th>
+        <td><%= @partner.staff %></td>
+      </tr>
+      <tr>
+        <th scope="row">担当者携帯電話番号</th>
+        <td><%= @partner.staff_phone %></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <%= link_to '発注先一覧へ', partners_path, class: 'btn btn-lg btn-secondary' %>
+</section>

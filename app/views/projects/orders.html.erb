@@ -1,0 +1,33 @@
+<h1><%= @project.name %>の発注書一覧</h1>
+
+<section>
+  <% if @project.orders.any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>顧客名</th>
+            <th>作成日</th>
+            <th>合計金額</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @project.orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= link_to order.project.name + ' 邸', order_path(order) %></td>
+            <td><%= order.document_date %></td>
+            <td></td>
+            <td><%= link_to '詳細', order_path(order), class: 'btn btn-link' %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+</section>
+
+<section>
+  <%= link_to '発注書新規作成', new_order_path(@project.id), class: 'btn btn-lg btn-primary' %>
+</section>

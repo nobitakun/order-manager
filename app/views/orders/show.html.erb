@@ -1,0 +1,25 @@
+<h1><%= @order.document_date %>の<%= @order.project.name %>の発注書の詳細</h1>
+<section>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">項目</th>
+        <th scope="col">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">id</th>
+        <td><%= @order.id %></td>
+      </tr>
+      <tr>
+        <th scope="row">作成日</th>
+        <td><%= @order.document_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">発注先</th>
+        <td><%= @order.partner.name %></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
