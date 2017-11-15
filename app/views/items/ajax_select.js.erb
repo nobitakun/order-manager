@@ -1,0 +1,7 @@
+var selecter = "<%= @line_item_object_id %>";
+var escapeSelecter = selecter.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, "\\$&");
+var optionsHTML = "<option value=''>未選択</option>>";
+<% @items.each do |item| %>
+optionsHTML += "<option value='<%= item.id %>'><%= item.name %></option>>";
+<% end %>
+$('#item-select-' + escapeSelecter + ' select').html(optionsHTML);

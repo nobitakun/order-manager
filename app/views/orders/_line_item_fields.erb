@@ -1,0 +1,9 @@
+<tr class="nested-fields">
+  <td><%= f.object_name %></td>
+  <td><%= collection_select(:item_category, :item_category_id, ItemCategory.all, :id, :name, { prompt: "未選択" }, { class: 'form-control category-switch', id: "#{f.object_name}" }) %></td>
+  <td id="item-select-<%= f.object_name %>"><%= f.collection_select(:item_id, @items, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %></td>
+  <td><%= f.text_field :quantity, class: 'form-control' %></td>
+  <td><%= f.text_field :delivery_date, class: 'form-control date-picker' %></td>
+  <td><%= f.text_field :remark, class: 'form-control' %></td>
+  <td><%= f.text_field :paid, class: 'form-control' %></td>
+</tr>

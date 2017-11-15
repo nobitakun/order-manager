@@ -1,0 +1,7 @@
+<%= form_for(@item_category) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, '部材カテゴリー名' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
+<% end %>

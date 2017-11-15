@@ -13,6 +13,10 @@
         <td><%= @order.id %></td>
       </tr>
       <tr>
+        <th scope="row">発注名称</th></th>
+        <td><%= @order.name %></td>
+      </tr>
+      <tr>
         <th scope="row">作成日</th>
         <td><%= @order.document_date %></td>
       </tr>
@@ -22,4 +26,43 @@
       </tr>
     </tbody>
   </table>
+</section>
+
+<section>
+  <h2>明細</h2>
+  <% if @order.line_items.any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>発注単位</th>
+            <th>納期</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.line_items.each do |line_item| %>
+          <tr>
+            <td><%= line_item.id %></td>
+            <td><%= line_item.item.name %></td>
+            <td><%= line_item.item.price.to_s(:delimited) %></td>
+            <td><%= line_item.quantity %></td>
+            <td><%= line_item.item.unit %></td>
+            <td><%= line_item.delivery_date %></td>
+            <td><%= line_item.remark %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+  <p>明細はありません</p>
+  <% end %>
+</section>
+
+<section>
+  <%= link_to '編集', edit_order_path(@order), class: 'btn btn-warning' %>
 </section>

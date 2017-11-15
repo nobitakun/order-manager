@@ -1,6 +1,12 @@
 <h1>部材カテゴリー一覧</h1>
 
 <section>
+  <%= link_to '新規部材カテゴリー登録', new_item_category_path, class: 'btn btn-lg btn-primary' %>
+</section>
+
+<hr />
+
+<section>
   <% if @item_categories.any? %>
     <div class="table-responsive">
       <table class="table">
@@ -8,6 +14,8 @@
           <tr>
             <th>ID</th>
             <th>名前</th>
+            <th>登録部材数</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -15,6 +23,11 @@
           <tr>
             <td><%= item_category.id %></td>
             <td><%= item_category.name %></td>
+            <td><%= Item.where(item_category_id: item_category.id).count %></td>
+            <td>
+              <%= link_to '編集', edit_item_category_path(item_category), class: 'btn btn-warning' %>
+              <%= link_to '削除', item_category, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+            </td>
           </tr>
         <% end %>
       </table>

@@ -1,6 +1,12 @@
 <h1>発注先一覧</h1>
 
 <section>
+  <%= link_to '新規発注先登録', new_partner_path, class: 'btn btn-lg btn-primary' %>
+</section>
+
+<hr />
+
+<section>
   <% if @partners.any? %>
     <div class="table-responsive">
       <table class="table">
@@ -9,6 +15,7 @@
             <th>ID</th>
             <th>発注先名</th>
             <th>担当者</th>
+            <th>発注数</th>
             <th></th>
           </tr>
         </thead>
@@ -18,14 +25,15 @@
             <td><%= partner.id %></td>
             <td><%= link_to partner.name, partner_path(partner) %></td>
             <td><%= partner.staff %></td>
-            <td><%= link_to '詳細', partner_path(partner), class: 'btn btn-link' %></td>
+            <td><%= Order.where(partner_id: partner.id).count %></td>
+            <td>
+              <%= link_to '詳細', partner_path(partner), class: 'btn btn-secondary' %>
+              <%= link_to '編集', edit_partner_path(partner), class: 'btn btn-warning' %>
+              <%= link_to '削除', partner, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+            </td>
           </tr>
         <% end %>
       </table>
     </div>
   <% end %>
-</section>
-
-<section>
-  <%= link_to '新規発注先登録', new_partner_path, class: 'btn btn-lg btn-primary' %>
 </section>

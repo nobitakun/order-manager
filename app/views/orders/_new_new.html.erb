@@ -1,0 +1,58 @@
+<h1><%= @project.name %> 邸の新規発注書登録</h1>
+<section>
+  <%= form_for(@order) do |f| %>
+  
+    <div class="form-group">
+      <%= f.label :name, '発注名称' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :document_date, '作成日' %>
+      <%= f.text_field :document_date, class: 'form-control' %>
+    </div>
+    
+    <%= f.hidden_field :project_id, value: @project.id  %>
+    
+    <div class="form-group">
+      <%= f.label :partner_id, '発注先' %>
+      <%= f.collection_select(:partner_id, Partner.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
+    </div>
+    
+    <hr />
+    
+    <h2>部材登録</h2>
+    
+    <%= link_to_add_association '明細を追加', f, :line_items,
+      class: 'btn btn-default',
+      data: {
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'append' }
+     %>
+    
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">index</th>
+            <th scope="col">部材カテゴリー</th>
+            <th scope="col">部材</th>
+            <th scope="col">数量</th>
+            <th scope="col">納期</th>
+            <th scope="col">小計</th>
+            <th scope="col">備考</th>
+          </tr>
+        </thead>
+        <tbody id="detail-association-insertion-point">
+          <%= f.fields_for :line_items do |a| %>
+          <% @index += 1 %>
+          <%= render 'line_item_fields', f: a, i: @index %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
+  <% end %>
+</section>
+

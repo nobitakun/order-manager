@@ -1,41 +1,4 @@
 <h1>新規発注先登録</h1>
 <section>
-  <%= form_for(@partner) do |f| %>
-    <div class="form-group">
-      <%= f.label :name, '発注先名' %>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :postal_code, '郵便番号' %>
-      <%= f.text_field :postal_code, class: 'form-control' %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :adress, '住所' %>
-      <%= f.text_field :adress, class: 'form-control' %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :phone, '電話番号' %>
-      <%= f.text_field :phone, class: 'form-control' %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :fax, 'FAX番号' %>
-      <%= f.text_field :fax, class: 'form-control' %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :staff, '担当者' %>
-      <%= f.text_field :staff, class: 'form-control' %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :staff_phone, '担当者携帯電話番号' %>
-      <%= f.text_field :staff_phone, class: 'form-control' %>
-    </div>
-    
-    <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
-  <% end %>
+  <%= render 'form' %>
 </section>

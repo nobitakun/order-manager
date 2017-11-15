@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   
   validates :user_id, presence: true
   
-  has_many :orders
+  has_many :orders, dependent: :destroy
   
   def order(partner)
     partner.create(partner_id: partner.id)

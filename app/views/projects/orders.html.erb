@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>顧客名</th>
+            <th>発注名称</th>
             <th>作成日</th>
             <th>合計金額</th>
             <th></th>
@@ -17,10 +17,14 @@
         <% @project.orders.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= link_to order.project.name + ' 邸', order_path(order) %></td>
+            <td><%= order.name %></td>
             <td><%= order.document_date %></td>
             <td></td>
-            <td><%= link_to '詳細', order_path(order), class: 'btn btn-link' %></td>
+            <td>
+              <%= link_to '詳細', order_path(order), class: 'btn btn-secondary' %>
+              <%= link_to '編集', edit_order_path(order), class: 'btn btn-warning' %>
+              <%= link_to '削除', order, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+            </td>
           </tr>
         <% end %>
       </table>

@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require jquery-ui/datepicker
  */
  
 // Custom bootstrap variables must be set or imported *before* bootstrap.
@@ -28,11 +29,22 @@ hr{
   margin-bottom: 2rem;
 }
 
+// .btn{
+// margin-left: 10px;
+// margin-right: 10px;
+// }
+
 /*
  * Typography
  */
 
 h1 {
+  padding-bottom: 9px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+h2 {
   padding-bottom: 9px;
   margin-bottom: 20px;
   border-bottom: 1px solid #eee;

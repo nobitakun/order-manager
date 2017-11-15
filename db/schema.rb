@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105151552) do
+ActiveRecord::Schema.define(version: 20171115190638) do
 
   create_table "item_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171105151552) do
     t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "paid"
     t.index ["item_id"], name: "index_line_items_on_item_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
   end
@@ -47,6 +48,8 @@ ActiveRecord::Schema.define(version: 20171105151552) do
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.boolean "destination"
     t.index ["partner_id"], name: "index_orders_on_partner_id"
     t.index ["project_id"], name: "index_orders_on_project_id"
   end
@@ -75,6 +78,7 @@ ActiveRecord::Schema.define(version: 20171105151552) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "remark"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

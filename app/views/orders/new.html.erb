@@ -1,18 +1,5 @@
 <h1><%= @project.name %> 邸の新規発注書登録</h1>
 <section>
-  <%= form_for(@order) do |f| %>
-    <div class="form-group">
-      <%= f.label :document_date, '作成日' %>
-      <%= f.text_field :document_date, class: 'form-control' %>
-    </div>
-    
-    <%= f.hidden_field :project_id, value: @project.id  %>
-    
-    <div class="form-group">
-      <%= f.label :partner_id, '発注先' %>
-      <%= f.collection_select(:partner_id, Partner.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
-    </div>
-
-    <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
-  <% end %>
+  <%= render 'form' %>
 </section>
+

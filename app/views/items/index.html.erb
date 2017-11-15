@@ -1,6 +1,13 @@
 <h1>部材一覧</h1>
 
 <section>
+  <%= link_to '新規部材登録', new_item_path, class: 'btn btn-lg btn-primary' %>
+  <%= link_to 'カテゴリー管理', item_categories_path, class: 'btn btn-lg btn-success' %>
+</section>
+
+<hr />
+
+<section>
   <% if @items.any? %>
     <div class="table-responsive">
       <table class="table">
@@ -8,6 +15,7 @@
           <tr>
             <th>ID</th>
             <th>名前</th>
+            <th>カテゴリー</th>
             <th>単価</th>
             <th>発注単位</th>
             <th></th>
@@ -18,17 +26,16 @@
           <tr>
             <td><%= item.id %></td>
             <td><%= item.name %></td>
+            <td><%= item.item_category.name %></td>
             <td><%= item.price.to_s(:delimited) %></td>
             <td><%= item.unit %></td>
-            <td><%= link_to '削除', item, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-link' %></td>
+            <td>
+              <%= link_to '編集', edit_item_path(item), class: 'btn btn-warning' %>
+              <%= link_to '削除', item, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+            </td>
           </tr>
         <% end %>
       </table>
     </div>
   <% end %>
-</section>
-
-<section>
-  <%= link_to '新規部材登録', new_item_path, class: 'btn btn-lg btn-primary' %>
-  <%= link_to 'カテゴリー管理', item_categories_path, class: 'btn btn-lg btn-success' %>
 </section>

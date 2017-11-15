@@ -1,6 +1,12 @@
 <h1>顧客一覧</h1>
 
 <section>
+  <%= link_to '新規案件登録', new_project_path, class: 'btn btn-lg btn-primary' %>
+</section>
+
+<hr />
+
+<section>
   <% if @projects.any? %>
     <div class="table-responsive">
       <table class="table">
@@ -10,6 +16,7 @@
             <th>顧客名</th>
             <th>建築地住所</th>
             <th>現固定電話</th>
+            <th>発注書数</th>
             <th></th>
           </tr>
         </thead>
@@ -20,18 +27,17 @@
             <td><%= link_to project.name + ' 邸', project_path(project) %></td>
             <td><%= project.adress %></td>
             <td><%= project.current_phone %></td>
+            <td><%= project.orders.count %></td>
             <td>
-              <%= link_to '顧客情報詳細', project_path(project), class: 'btn btn-link' %>
               <%= link_to '発注管理', orders_project_path(project.id), class: 'btn btn-link' %>
               <%= link_to '発注書作成', new_order_path(project.id), class: 'btn btn-link' %>
+              <%= link_to '詳細', project_path(project), class: 'btn btn-secondary' %>
+              <%= link_to '編集', edit_project_path(project), class: 'btn btn-warning' %>
+              <%= link_to '削除', project, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
             </td>
           </tr>
         <% end %>
       </table>
     </div>
   <% end %>
-</section>
-
-<section>
-  <%= link_to '新規案件登録', new_project_path, class: 'btn btn-lg btn-primary' %>
 </section>
