@@ -51,6 +51,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: message-board_production
-  username: message-board
+  database: order-manager_production
+  username: order-manager
   password: <%= ENV['ORDER_MANAGER_DATABASE_PASSWORD'] %>
