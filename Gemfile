@@ -60,3 +60,8 @@ gem "cocoon"
 # pdf export
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
+
+
+group :production do
+  gem 'pg'
+end
