@@ -17,12 +17,20 @@
         <td><%= @order.name %></td>
       </tr>
       <tr>
+        <th scope="row">担当</th></th>
+        <td><%= @order.staff %></td>
+      </tr>
+      <tr>
         <th scope="row">作成日</th>
         <td><%= @order.document_date %></td>
       </tr>
       <tr>
         <th scope="row">発注先</th>
         <td><%= @order.partner.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">発注合計</th>
+        <td><%=  %>円</td>
       </tr>
     </tbody>
   </table>
@@ -40,8 +48,10 @@
             <th>単価</th>
             <th>数量</th>
             <th>発注単位</th>
+            <th>小計</th>
             <th>納期</th>
             <th>備考</th>
+            <th>支払い金額</th>
           </tr>
         </thead>
         <tbody>
@@ -52,8 +62,10 @@
             <td><%= line_item.item.price.to_s(:delimited) %></td>
             <td><%= line_item.quantity %></td>
             <td><%= line_item.item.unit %></td>
+            <td><%= calc_sub_total(line_item).to_s(:delimited) %></td>
             <td><%= line_item.delivery_date %></td>
             <td><%= line_item.remark %></td>
+            <td><%= line_item.paid %></td>
           </tr>
         <% end %>
       </table>
@@ -64,5 +76,6 @@
 </section>
 
 <section>
-  <%= link_to '編集', edit_order_path(@order), class: 'btn btn-warning' %>
+  <%= link_to '編集', edit_order_path(@order), class: 'btn btn-lg btn-warning' %>
+  <%= link_to 'PDF', request.path_info + '.pdf', class: 'btn btn-lg btn-info' %>
 </section>

@@ -56,3 +56,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem "cocoon"
+
+# pdf export
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'

@@ -6,6 +6,19 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @line_item_total = 0
+    @order.line_items.each do | line_item |
+      @line_item_total += line_item.quantity * line_item.item.price
+    end
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'detail',                        # pdf ファイル名
+               encording: 'UTF-8',                   # 日本語を使う場合には指定する
+               layout: 'pdf.html',                   # レイアウトファイルの指定
+               show_as_html: params[:debug].present? # debug するか？
+      end
+    end
   end
 
   def new
@@ -14,6 +27,7 @@ class OrdersController < ApplicationController
     @order.line_items.build
     @item_categories = ItemCategory.all
     @items = Item.all
+    @user = User.all
   end
   
   def create
@@ -35,6 +49,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @project = Project.find(@order.project_id)
     @items = Item.all
+    @user = User.all
   end
   
   def update
@@ -63,7 +78,7 @@ class OrdersController < ApplicationController
   private
    
   def order_params
-    params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid])
+    params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, :staff, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid])
   end
   
 end

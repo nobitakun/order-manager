@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :orders]
   
   def index
     @projects = Project.order('created_at DESC').page(params[:page])
@@ -45,8 +45,10 @@ class ProjectsController < ApplicationController
   end
   
   def orders
-    @project = Project.find(params[:id])
-    render 'orders'
+    @project_order_price_total = 0
+    @project.line_items.each do | line_item |
+      @project_order_price_total += line_item.quantity * line_item.item.price
+    end
   end
   
   private
