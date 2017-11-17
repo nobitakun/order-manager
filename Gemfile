@@ -39,6 +39,9 @@ gem "cocoon"
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
+#debug
+gem 'rails_12factor'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
