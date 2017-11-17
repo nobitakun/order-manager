@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     @order.line_items.build
     @item_categories = ItemCategory.all
     @items = Item.all
-    @user = User.all
+    # @user = User.all
   end
   
   def create
