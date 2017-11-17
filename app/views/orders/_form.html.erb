@@ -12,10 +12,7 @@
 
   <%= f.hidden_field :project_id, value: @project.id  %>
   
-  <div class="form-group">
-    <%= f.label :staff, '担当' %>
-    <%= f.collection_select(:staff, @user, :name, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
-  </div>
+
   
   <div class="form-group">
     <%= f.label :partner_id, '発注先' %>
