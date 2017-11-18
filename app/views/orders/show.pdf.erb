@@ -1,41 +1,41 @@
-<h1>Order Document</h1>
+<h1>発　　注　　書</h1>
 
 <div id="documentHeaderWrap" class="clearfix">
   <table id="documentHeaderLeft">
     <tr>
-      <th>order day</th>
+      <th>発注日</th>
       <td><%= @order.document_date %></td>
     </tr>
     <tr>
-      <th>building spot</th>
+      <th>建築現場名</th>
       <td><%= @order.project.name %> sama tei</td>
     </tr>
     <tr>
-      <th>staff</th>
+      <th>担当</th>
       <td><%= @order.staff %></td>
     </tr>
   </table>
   <table id="documentHeaderRight">
     <tr>
-      <td>kaisyamei</td>
+      <td>株式会社 サンプルコーポレーション</td>
     </tr>
     <tr>
-      <td>1-2-3 Mukaihara, Itabashi-ku, Tokyo, Japan</td>
+      <td>〒150-0001<br />東京都港区南青山1-2-3</td>
     </tr>
     <tr>
-      <td>tel: 1234-1234-1234</td>
+      <td>電話番号: 0120-1234-1234</td>
     </tr>
   </table>
 </div>
 
 <table id="partnerTable">
   <tr>
-    <th>partner name</th>
-    <td><%= Partner.find(@order.partner_id).name %> onchu</td>
+    <th>発注先名</th>
+    <td><%= Partner.find(@order.partner_id).name %> 御中</td>
   </tr>
   <tr>
-    <th>staff name</th>
-    <td><%= Partner.find(@order.partner_id).staff %> sama</td>
+    <th>ご担当者名</th>
+    <td><%= Partner.find(@order.partner_id).staff %> 様</td>
   </tr>
 </table>
 
@@ -43,15 +43,15 @@
   <table id="orderDetail">
     <thead>
       <tr>
-        <th>category</th>
-        <th>item code</th>
-        <th>item name</th>
-        <th>unit</th>
-        <th>price</th>
-        <th>quqntity</th>
-        <th>sub total</th>
-        <th>date</th>
-        <th>remark</th>
+        <th>カテゴリ</th>
+        <th>部材コード</th>
+        <th>部材名</th>
+        <th>単位</th>
+        <th>単価</th>
+        <th>数量</th>
+        <th>金額</th>
+        <th>納品日</th>
+        <th>備考</th>
       </tr>
     </thead>
     <tbody>
@@ -77,31 +77,31 @@
   
   <table id="documentFooterLeft">
     <tr>
-      <th>destination</th>
+      <th>納入先</th>
       <% if @order.destination %>
-        <td>tokyo shibuya tomigaya 3-3-3</td>
+        <td>〒150-0001 東京都港区南青山1-2-3</td>
       <% else %>
         <td><%= @order.project.adress %></td>
       <% end %>
     </tr>
     <tr>
-      <th>remark</th>
+      <th>備考欄</th>
       <td></td>
     </tr>
   </table>
   
   <table id="documentFooterRight">
     <tr>
-      <th>total</th>
-      <td>1234,000</td>
+      <th>合計</th>
+      <td>¥1234,000</td>
     </tr>
     <tr>
-      <th>tax</th>
-      <td>98,720</td>
+      <th>消費税</th>
+      <td>¥98,720</td>
     </tr>
     <tr>
-      <th>tax total</th>
-      <td>1,337,720</td>
+      <th>税込合計</th>
+      <td>¥1,337,720</td>
     </tr>
   </table>
   
