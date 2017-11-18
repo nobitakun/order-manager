@@ -1,6 +1,11 @@
 <%= form_for(@order) do |f| %>
 
   <div class="form-group">
+    <%= f.label :project_id, '顧客' %>
+    <%= f.collection_select(:project_id, Project.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :name, '発注名称' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
@@ -9,8 +14,6 @@
     <%= f.label :document_date, '作成日' %>
     <%= f.text_field :document_date, class: 'form-control date-picker' %>
   </div>
-
-  <%= f.hidden_field :project_id, value: @project.id  %>
   
   <div class="form-group">
     <%= f.label :staff, '担当' %>

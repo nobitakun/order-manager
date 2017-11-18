@@ -77,5 +77,6 @@
 
 <section>
   <%= link_to '編集', edit_order_path(@order), class: 'btn btn-lg btn-warning' %>
+  <%= link_to '複製', copy_order_path(@order), class: 'btn btn-lg btn-warning' %>
   <%= link_to 'PDF', request.path_info + '.pdf', class: 'btn btn-lg btn-info' %>
 </section>

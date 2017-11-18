@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @project = Project.find(@order.project_id)
     @items = Item.all
-    @user = User.all
+    # @user = User.all
   end
   
   def update
@@ -73,6 +73,13 @@ class OrdersController < ApplicationController
   end
   
   def copy
+    @old_order =  Order.find(params[:id])
+    @line_items = @old_order.line_items
+    @project = Project.find(@old_order.project_id)
+    # @order = Marshal.load(Marshal.dump(@old_order))
+    @order =  @old_order.deep_dup
+    # @order.line_items.build
+    @items = Item.all
   end
   
   private
