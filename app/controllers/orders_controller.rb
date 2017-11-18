@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 
   def new
     @project = Project.find(params[:id])
-    @order = Order.new
+    @order = Order.new(project_id: @project.id)
     @order.line_items.build
     @item_categories = ItemCategory.all
     @items = Item.all
