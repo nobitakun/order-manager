@@ -13,10 +13,10 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: 'detail',                        # pdf ファイル名
-               encording: 'UTF-8',                   # 日本語を使う場合には指定する
-               layout: 'pdf.html',                   # レイアウトファイルの指定
-               show_as_html: params[:debug].present? # debug するか？
+        render pdf: 'detail',                       
+               encording: 'UTF-8',                  
+               layout: 'pdf.html',                  
+               show_as_html: params[:debug].present?
       end
     end
   end
@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   def new
     @project = Project.find(params[:id])
     @order = Order.new(project_id: @project.id)
-    @partner = Partner.all.order_kana
+    @partner = Partner.order(:kana)
     @order.line_items.build
     @item_categories = ItemCategory.all
     @items = Item.all
@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find(params[:id])
     @project = Project.find(@order.project_id)
+    @partner = Partner.order(:kana)
     @items = Item.all
     # @user = User.all
   end
