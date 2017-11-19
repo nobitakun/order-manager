@@ -22,7 +22,7 @@
   
   <div class="form-group">
     <%= f.label :partner_id, '発注先' %>
-    <%= f.collection_select(:partner_id, Partner.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
+    <%= f.collection_select(:partner_id, @partner, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
   </div>
   
   <div class="form-group">
