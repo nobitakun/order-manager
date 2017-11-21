@@ -30,7 +30,11 @@
       </tr>
       <tr>
         <th scope="row">発注合計</th>
-        <td><%=  %>円</td>
+        <td><%= calc_total(@order).to_s(:delimited) %>円</td>
+      </tr>
+      <tr>
+        <th scope="row">支払い合計</th>
+        <td><%= calc_paid_total(@order).to_s(:delimited) %>円</td>
       </tr>
     </tbody>
   </table>
@@ -65,7 +69,7 @@
             <td><%= calc_sub_total(line_item).to_s(:delimited) %>円</td>
             <td><%= line_item.delivery_date %></td>
             <td><%= line_item.remark %></td>
-            <td><%= line_item.paid %></td>
+            <td><%= line_item.paid.to_s(:delimited) %>円
           </tr>
         <% end %>
       </table>

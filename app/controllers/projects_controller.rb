@@ -45,10 +45,6 @@ class ProjectsController < ApplicationController
   end
   
   def orders
-    @project_order_price_total = 0
-    @project.line_items.each do | line_item |
-      @project_order_price_total += line_item.quantity * line_item.item.price
-    end
   end
   
   private
