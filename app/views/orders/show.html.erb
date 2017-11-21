@@ -59,10 +59,10 @@
           <tr>
             <td><%= line_item.id %></td>
             <td><%= line_item.item.name %></td>
-            <td><%= line_item.item.price.to_s(:delimited) %></td>
+            <td><%= line_item.item.price.to_s(:delimited) %>円</td>
             <td><%= line_item.quantity %></td>
             <td><%= line_item.item.unit %></td>
-            <td><%= calc_sub_total(line_item).to_s(:delimited) %></td>
+            <td><%= calc_sub_total(line_item).to_s(:delimited) %>円</td>
             <td><%= line_item.delivery_date %></td>
             <td><%= line_item.remark %></td>
             <td><%= line_item.paid %></td>
