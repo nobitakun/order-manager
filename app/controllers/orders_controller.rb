@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_partner_order_kana, only: [:new, :edit, :copy]
   
   def index
   end
@@ -24,15 +25,12 @@ class OrdersController < ApplicationController
   def new
     @project = Project.find(params[:id])
     @order = Order.new(project_id: @project.id)
-    @partner = Partner.order(:kana)
     @order.line_items.build
-    @items = Item.all
   end
   
   def create
     @order = Order.new(order_params)
     @project = Project.find(order_params[:project_id])
-    @items = Item.all
     
     if @order.save
       flash[:success] = '発注書を登録しました'
@@ -45,13 +43,10 @@ class OrdersController < ApplicationController
   
   def edit
     @project = Project.find(@order.project_id)
-    @partner = Partner.order(:kana)
-    @items = Item.all
   end
   
   def update
     @project = Project.find(order_params[:project_id])
-    @items = Item.all
     if @order.update(order_params)
       flash[:success] = '発注書を編集しました'
       redirect_to @order
@@ -71,10 +66,7 @@ class OrdersController < ApplicationController
     @old_order =  Order.find(params[:id])
     @line_items = @old_order.line_items
     @project = Project.find(@old_order.project_id)
-    # @order = Marshal.load(Marshal.dump(@old_order))
     @order =  @old_order.deep_dup
-    # @order.line_items.build
-    @items = Item.all
   end
   
   private
@@ -83,10 +75,10 @@ class OrdersController < ApplicationController
      @order = Order.find(params[:id])
   end
   
-  def set_order_project
+  def set_partner_order_kana
+    @partner = Partner.order(:kana)
   end
-    
-   
+  
   def order_params
     params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, :staff, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid])
   end
