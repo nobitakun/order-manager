@@ -6,9 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'rootユーザー', email: 'root@root.com', root: true, admin: true, password_digest: 'root')
-User.create(name: 'テストユーザー', email: 'test@test.com', root: false, admin: false, password_digest: 'test')
-
 ItemCategory.create(name: '養生 足場 産廃')
 ItemCategory.create(name: '建築資材 外部用')
 ItemCategory.create(name: '建築資材 内部用')
@@ -48,8 +45,10 @@ Partner.create(name: '菊池内装', kana: 'きくち', postal_code: '150-0022',
 Partner.create(name: '株式会社アライ', kana: 'あらい', postal_code: '150-0022', adress: '東京都某所', phone: '03-1111-2222', fax: '03-1111-2223', staff: '何某', staff_phone: '090-1111-2222')
 Partner.create(name: '小林ブロック', kana: 'こばやし', postal_code: '150-0022', adress: '東京都某所', phone: '03-1111-2222', fax: '03-1111-2223', staff: '何某', staff_phone: '090-1111-2222')
 
-Item.create(name: 'コロニアルクアッド', price: 4000, unit: '㎡')
-Item.create(name: 'コロニアルクグラッサ', price: 5000, unit: '㎡')
-Item.create(name: '鶴弥サンレイ スーパートライ', price: 8000, unit: '㎡')
-Item.create(name: '東レ テスリーライン', price: 6500, unit: '㎡')
-Item.create(name: '玄関ドア', price: 200000, unit: '本')
+Item.create(name: 'コロニアルクアッド', price: 4000, unit: '㎡', item_category_id: '')
+Item.create(name: 'コロニアルクグラッサ', price: 5000, unit: '㎡', item_category_id: '')
+Item.create(name: '鶴弥サンレイ スーパートライ', price: 8000, unit: '㎡', item_category_id: '')
+Item.create(name: '東レ テスリーライン', price: 6500, unit: '㎡', item_category_id: '')
+Item.create(name: '玄関ドア', price: 200000, unit: '本', item_category_id: '')
+
+Project.create(name: '柳瀬 裕示', current_postal_code: '249-0004', postal_code: '249-0004', current_adress: '逗子市沼間3-25-31 須田テラスA棟', adress: '逗子市沼間2丁目1349-4', current_phone: '046-872-9927', phone: '', owner_phone: '090-8313-6440', user_id: '')
