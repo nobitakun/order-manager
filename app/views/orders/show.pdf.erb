@@ -93,15 +93,15 @@
   <table id="documentFooterRight">
     <tr>
       <th>合計</th>
-      <td>¥<%= calc_total(@order).to_s(:delimited) %></td>
+      <td>¥<%= (@total = calc_total(@order)).to_s(:delimited) %></td>
     </tr>
     <tr>
       <th>消費税</th>
-      <td></td>
+      <td>¥<%= (@total * 0.08).floor.to_s(:delimited) %></td>
     </tr>
     <tr>
       <th>税込合計</th>
-      <td>¥1,337,720</td>
+      <td>¥<%= (@total * 1.08).floor.to_s(:delimited) %></td>
     </tr>
   </table>
   
