@@ -1,4 +1,5 @@
 module ApplicationHelper
+  require 'bigdecimal'
   
   def calc_sub_total(line_item)
     @line_item_sub_total = line_item.quantity * line_item.item.price

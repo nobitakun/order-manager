@@ -44,6 +44,10 @@
         <th scope="row">備考</th>
         <td><%= @project.remark %></td>
       </tr>
+      <tr>
+        <th scope="row">売り上げ</th>
+        <td><%= @project.recipt.to_s(:delimited) %>円</td>
+      </tr>
     </tbody>
   </table>
 </section>

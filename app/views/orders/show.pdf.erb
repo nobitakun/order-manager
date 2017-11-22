@@ -93,11 +93,11 @@
   <table id="documentFooterRight">
     <tr>
       <th>合計</th>
-      <td>¥1234,000</td>
+      <td>¥<%= calc_total(@order).to_s(:delimited) %></td>
     </tr>
     <tr>
       <th>消費税</th>
-      <td>¥98,720</td>
+      <td></td>
     </tr>
     <tr>
       <th>税込合計</th>

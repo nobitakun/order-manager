@@ -43,6 +43,11 @@
     <%= f.label :remark, '備考' %>
     <%= f.text_area :remark, class: 'form-control', size: '20x6' %>
   </div>
+  
+  <div class="form-group">
+    <%= f.label :recipt, '売り上げ' %>
+    <%= f.text_field :recipt, class: 'form-control' %>
+  </div>
 
   <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
 <% end %>
