@@ -74,12 +74,13 @@
             <td>
               <%= link_to '詳細', order_path(order), class: 'btn btn-secondary' %>
               <%= link_to '編集', edit_order_path(order), class: 'btn btn-warning' %>
-              <%= link_to '削除', order, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
             </td>
           </tr>
         <% end %>
       </table>
     </div>
+  <% else %>
+    <p>発注はありません</p>
   <% end %>
 </section>
 

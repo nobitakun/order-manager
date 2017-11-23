@@ -28,12 +28,13 @@
             <td><%= Order.where(partner_id: partner.id).count %></td>
             <td>
               <%= link_to '詳細', partner_path(partner), class: 'btn btn-secondary' %>
-              <%= link_to '編集', edit_partner_path(partner), class: 'btn btn-warning' %>
-              <%= link_to '削除', partner, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
             </td>
           </tr>
         <% end %>
       </table>
     </div>
+    <%= paginate @partners %>
+  <% else %>
+    <p>発注先はまだありません</p>
   <% end %>
 </section>

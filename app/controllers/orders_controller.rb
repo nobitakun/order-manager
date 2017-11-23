@@ -7,10 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @line_item_total = 0
-    @order.line_items.each do | line_item |
-      @line_item_total += line_item.quantity * line_item.item.price
-    end
     respond_to do |format|
       format.html
       format.pdf do
@@ -59,7 +55,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     flash[:success] = '発注書を削除しました'
-    redirect_to project_url
+    redirect_to orders_project_url(id: @order.project_id)
   end
   
   def copy

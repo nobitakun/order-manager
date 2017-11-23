@@ -3,7 +3,7 @@ class ItemCategoriesController < ApplicationController
   before_action :set_item_category, only: [:edit, :update, :destroy]
   
   def index
-    @item_categories = ItemCategory.all
+    @item_categories = ItemCategory.all.page(params[:page])
   end
   
   def new

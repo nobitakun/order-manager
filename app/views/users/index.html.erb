@@ -24,11 +24,11 @@
             <td><%= user.admin %></td>
             <td>
               <%= link_to '詳細', user_path(user), class: 'btn btn-secondary' %>
-              <%= link_to '編集', edit_user_path(user), class: 'btn btn-warning' %>
             </td>
           </tr>
         <% end %>
       </table>
     </div>
+    <%= paginate @users %>
   <% end %>
 </section>

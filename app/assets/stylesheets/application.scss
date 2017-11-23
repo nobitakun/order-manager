@@ -95,3 +95,22 @@ h2 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+
+
+/* kaminari */
+.pagination .page, .pagination .next, .pagination .last, .pagination .first, .pagination .prev{
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  width: 40px;
+  padding: 5px 0;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.pagination .next, .pagination .last, .pagination .first, .pagination .prev{
+  width: 80px;
+}
+
+.pagination .page a{
+  display: block;
+}

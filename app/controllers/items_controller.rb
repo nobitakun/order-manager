@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
   
   def index
-    @items = Item.order('created_at DESC').page(params[:page])
+    @items = Item.order('id DESC').page(params[:page])
   end
 
   def new

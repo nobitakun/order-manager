@@ -13,7 +13,6 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>名前</th>
             <th>カテゴリー</th>
             <th>単価</th>
@@ -24,7 +23,6 @@
         <tbody>
         <% @items.each do |item| %>
           <tr>
-            <td><%= item.id %></td>
             <td><%= item.name %></td>
             <td><%= item.item_category.name %></td>
             <td><%= item.price.to_s(:delimited) %>円</td>
@@ -37,5 +35,8 @@
         <% end %>
       </table>
     </div>
+  <%= paginate @items %>
+  <% else %>
+    <p>部材が登録されてません</p>
   <% end %>
 </section>
