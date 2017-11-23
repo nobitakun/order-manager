@@ -37,8 +37,6 @@
             <td>
               <%= link_to '発注管理', orders_project_path(project.id), class: 'btn btn-success' %>
               <%= link_to '詳細', project_path(project), class: 'btn btn-secondary' %>
-              <%= link_to '編集', edit_project_path(project), class: 'btn btn-warning' %>
-              <%= link_to '削除', project, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
             </td>
           </tr>
         <% end %>
