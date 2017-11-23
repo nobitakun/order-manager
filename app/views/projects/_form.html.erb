@@ -1,5 +1,10 @@
 <%= form_for(@project) do |f| %>
   <div class="form-group">
+    <%= f.label :code, '顧客番号' %>
+    <%= f.text_field :code, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :name, '顧客名' %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
@@ -47,6 +52,16 @@
   <div class="form-group">
     <%= f.label :recipt, '売り上げ' %>
     <%= f.text_field :recipt, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :contract_date, '契約日' %>
+    <%= f.text_field :contract_date, class: 'form-control date-picker' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :finish_date, '引渡日' %>
+    <%= f.text_field :finish_date, class: 'form-control date-picker' %>
   </div>
 
   <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>

@@ -54,6 +54,6 @@ class ProjectsController < ApplicationController
   end
   
   def project_params
-    params.require(:project).permit(:name, :current_postal_code, :postal_code, :adress, :current_adress, :phone, :current_phone, :owner_phone, :remark, :recipt)
+    params.require(:project).permit(:code, :name, :current_postal_code, :postal_code, :adress, :current_adress, :phone, :current_phone, :owner_phone, :remark, :recipt, :contract_date, :finish_date)
   end
 end

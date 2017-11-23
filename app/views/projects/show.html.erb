@@ -48,6 +48,14 @@
         <th scope="row">売り上げ</th>
         <td><%= @project.recipt.to_s(:delimited) %>円</td>
       </tr>
+      <tr>
+        <th scope="row">契約日</th>
+        <td><%= @project.contract_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">引渡日</th>
+        <td><%= @project.finish_date %></td>
+      </tr>
     </tbody>
   </table>
 </section>

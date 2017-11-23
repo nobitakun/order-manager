@@ -44,7 +44,6 @@
     <thead>
       <tr>
         <th>カテゴリ</th>
-        <th>部材コード</th>
         <th>部材名</th>
         <th>単位</th>
         <th>単価</th>
@@ -58,7 +57,6 @@
     <% @order.line_items.each do |line_item| %>
       <tr>
         <td><%= line_item.item.item_category.name %></td>
-        <td></td>
         <td><%= line_item.item.name %></td>
         <td><%= line_item.item.unit %></td>
         <td><%= line_item.item.price.to_s(:delimited) %></td>

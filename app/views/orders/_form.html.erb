@@ -30,6 +30,11 @@
     <%= f.select :destination, [['自社', 'true'], ['建築先', 'false']], {}, { class: 'form-control' } %>
   </div>
   
+  <div class="form-group">
+    <%= f.label :done, '発注済み' %>
+    <%= f.select :done, [['未発注', 'false'], ['発注済み', 'true']], {}, { class: 'form-control' } %>
+  </div>
+  
   <hr />
   
   <h2>部材登録</h2>
@@ -51,6 +56,7 @@
           <th scope="col">納期</th>
           <th scope="col">備考</th>
           <th scope="col">支払い金額</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody id="detail-association-insertion-point">

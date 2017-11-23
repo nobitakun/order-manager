@@ -61,7 +61,11 @@
         </thead>
         <tbody>
         <% @project.orders.each do |order| %>
+          <% if order.done %>
+          <tr class="table-dark">
+          <% else %>
           <tr>
+          <% end %>
             <td><%= order.id %></td>
             <td><%= order.name %></td>
             <td><%= order.document_date %></td>
@@ -104,7 +108,11 @@
         </thead>
         <tbody>
         <% @project.line_items.order('id desc').each do |line_item| %>
+          <% if line_item.order.done %>
+          <tr class="table-dark">
+          <% else %>
           <tr>
+          <% end %>
             <td><%= line_item.id %></td>
             <td><%= line_item.item.name %></td>
             <td><%= line_item.order.name %></td>
