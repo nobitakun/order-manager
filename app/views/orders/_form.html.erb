@@ -1,9 +1,13 @@
 <%= form_for(@order) do |f| %>
 
-  <div class="form-group">
-    <%= f.label :project_id, '顧客' %>
-    <%= f.collection_select(:project_id, Project.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
-  </div>
+  <% if current_page?(action: 'copy') %>
+    <div class="form-group">
+      <%= f.label :project_id, '顧客' %>
+      <%= f.collection_select(:project_id, Project.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
+    </div>
+  <% else %>
+    <%= f.hidden_field :project_id, value: @project.id  %>
+  <% end %>
   
   <div class="form-group">
     <%= f.label :name, '発注名称' %>

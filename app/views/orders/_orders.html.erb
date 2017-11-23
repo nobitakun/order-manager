@@ -1,0 +1,40 @@
+  <% if orders.any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <% if current_page?(controller: 'static_pages', action: 'home') %>
+              <th>顧客名</th>
+            <% end %>
+            <th>発注名称</th>
+            <th>作成日</th>
+            <th>発注金額</th>
+            <th>支払金額</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% orders.each do |order| %>
+          <% if order.done %>
+            <tr class="table-dark">
+          <% else %>
+            <tr>
+          <% end %>
+            <% if current_page?(controller: 'static_pages', action: 'home') %>
+              <td><%= order.project.name %></td>
+            <% end %>
+              <td><%= order.name %></td>
+              <td><%= order.document_date %></td>
+              <td><%= calc_total(order).to_s(:delimited) %>円</td>
+              <td><%= calc_paid_total(order).to_s(:delimited) %>円</td>
+              <td>
+                <%= link_to '詳細', order_path(order), class: 'btn btn-secondary' %>
+                <%= link_to '編集', edit_order_path(order), class: 'btn btn-warning' %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+    <p>発注はありません</p>
+  <% end %>

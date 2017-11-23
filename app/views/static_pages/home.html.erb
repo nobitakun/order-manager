@@ -1,45 +1,7 @@
 <% if logged_in? %>
 <h1>最近の発注</h1>
 <section>
-  <% if @orders.any? %>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>顧客名</th>
-            <th>発注名称</th>
-            <th>担当</th>
-            <th>発注書日付</th>
-            <th>発注金額</th>
-            <th>支払金額</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @orders.order('id DESC').each do |order| %>
-          <% if order.done %>
-          <tr class="table-dark">
-          <% else %>
-          <tr>
-          <% end %>
-            <td><%= order.project.name %></td>
-            <td><%= order.name %></td>
-            <td><%= order.staff %></td>
-            <td><%= order.document_date %></td>
-            <td><%= calc_total(order).to_s(:delimited) %>円</td>
-            <td><%= calc_paid_total(order).to_s(:delimited) %>円</td>
-            <td>
-              <%= link_to '詳細', order_path(order), class: 'btn btn-secondary' %>
-              <%= link_to '編集', edit_order_path(order), class: 'btn btn-warning' %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    <%= paginate @orders %>
-  <% else %>
-    <p>発注はありません</p>
-  <% end %>
+  <%= render 'orders/orders', orders: @orders %>
 </section>
 <% else %>
   <h1>ログインしてください</h1>

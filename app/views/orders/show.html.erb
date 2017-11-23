@@ -46,41 +46,7 @@
 
 <section>
   <h2>明細</h2>
-  <% if @order.line_items.any? %>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>名前</th>
-            <th>単価</th>
-            <th>数量</th>
-            <th>発注単位</th>
-            <th>小計</th>
-            <th>納期</th>
-            <th>備考</th>
-            <th>支払い金額</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @order.line_items.each do |line_item| %>
-          <tr>
-            <td><%= line_item.id %></td>
-            <td><%= line_item.item.name %></td>
-            <td><%= line_item.item.price.to_s(:delimited) %>円</td>
-            <td><%= line_item.quantity %></td>
-            <td><%= line_item.item.unit %></td>
-            <td><%= calc_sub_total(line_item).to_s(:delimited) %>円</td>
-            <td><%= line_item.delivery_date %></td>
-            <td><%= line_item.remark %></td>
-            <td><%= line_item.paid.to_s(:delimited) %>円
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  <% else %>
-  <p>明細はありません</p>
-  <% end %>
+  <%= render 'line_items/line_items', line_items: @order.line_items %>
 </section>
 
 <section>
