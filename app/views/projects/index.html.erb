@@ -12,7 +12,6 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>顧客番号</th>
             <th>顧客名</th>
             <th>建築地住所</th>
@@ -26,7 +25,6 @@
         <tbody>
         <% @projects.each do |project| %>
           <tr>
-            <td><%= project.id %></td>
             <td><%= project.code %></td>
             <td><%= link_to project.name + ' 邸', project_path(project) %></td>
             <td><%= project.adress %></td>

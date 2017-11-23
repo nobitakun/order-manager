@@ -12,7 +12,6 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>発注先名</th>
             <th>担当者</th>
             <th>発注数</th>
@@ -22,7 +21,6 @@
         <tbody>
         <% @partners.each do |partner| %>
           <tr>
-            <td><%= partner.id %></td>
             <td><%= link_to partner.name, partner_path(partner) %></td>
             <td><%= partner.staff %></td>
             <td><%= Order.where(partner_id: partner.id).count %></td>

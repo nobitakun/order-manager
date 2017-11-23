@@ -31,6 +31,11 @@
   </div>
   
   <div class="form-group">
+    <%= f.label :remark, '備考' %>
+    <%= f.text_area :remark, class: 'form-control', size: '20x6' %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :done, '発注済み' %>
     <%= f.select :done, [['未発注', 'false'], ['発注済み', 'true']], {}, { class: 'form-control' } %>
   </div>

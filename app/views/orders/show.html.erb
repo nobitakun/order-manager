@@ -36,6 +36,10 @@
         <th scope="row">支払い合計</th>
         <td><%= calc_paid_total(@order).to_s(:delimited) %>円</td>
       </tr>
+      <tr>
+        <th scope="row">備考欄</th>
+        <td><%= @order.remark %></td>
+      </tr>
     </tbody>
   </table>
 </section>

@@ -6,7 +6,6 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>名前</th>
             <th>email</th>
             <th>root</th>
@@ -17,7 +16,6 @@
         <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.id %></td>
             <td><%= link_to user.name, user_path(user) %></td>
             <td><%= user.email %></td>
             <td><%= user.root %></td>
