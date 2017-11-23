@@ -1,19 +1,12 @@
 <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
   <ul class="nav nav-pills flex-column">
     <li class="nav-item">
+      <% if current_page?(root_path) %>
+      <a class="nav-link active" href="/">HOME</a>
+      <% else %>
       <a class="nav-link" href="/">HOME</a>
+      <% end %>
     </li>
-    <li class="nav-item">
-      <%= link_to '部材カテゴリー管理', item_categories_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to '部材管理', items_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to '発注先管理', partners_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to '顧客管理', projects_path, class: 'nav-link' %>
-    </li>
+    <%= sidebar_list_items() %>
   </ul>
 </nav>

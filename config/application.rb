@@ -27,5 +27,8 @@ module OrderManager
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    
+    # フォント追加
+    config.assets.paths << "#{Rails}/vender/assets/fonts"
   end
 end
