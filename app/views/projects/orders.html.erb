@@ -4,7 +4,7 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">発注合計金額(税込)</th>
+        <th scope="col">支払い合計金額(税込)</th>
         <th scope="col">売り上げ</th>
         <th scope="col">粗利</th>
         <th scope="col">粗利率</th>
@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= (@total = (calc_project_total(@project) * 1.08.rationalize).floor).to_s(:delimited) %>円</td>
+        <td><%= (@total = (calc_project_paid_total(@project) * 1.08.rationalize).floor).to_s(:delimited) %>円</td>
         <td><%= @project.recipt.to_s(:delimited) %>円</td>
         <td><%= (@gross_profit = (@project.recipt - @total)).to_s(:delimited) %>円</td>
         <td><%= (@gross_profit.to_f / @project.recipt.to_f) * 100 %>%</td>
