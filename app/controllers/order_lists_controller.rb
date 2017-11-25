@@ -52,24 +52,32 @@ class OrderListsController < ApplicationController
     @old_order_list =  OrderList.find(params[:id])
     @line_items = @old_order_list.line_items
     @project = Project.find(@old_order_list.project_id)
-    @order_list =  OrderList.create!(name: @old_order_list.name + "~コピー", project_id: @old_order_list.project_id)
-    @line_items.each do |item|
-      item.id = nil
-      item.order_list_id = @order_list.id
-      item = item.attributes.compact
-      LineItem.create!(item)
-    end
+    @order_list =  OrderList.new(name: @old_order_list.name + "~コピー", project_id: @old_order_list.project_id)
+    # @line_items.each do |item|
+    #   item.id = nil
+    #   item.order_list_id = @order_list.id
+    #   item = item.attributes.compact
+    #   LineItem.create!(item)
+    # end
   end
   
   def copy
-    if @order_list.copy
+    @old_order_list =  OrderList.find(params[:id])
+    @line_items = @old_order_list.line_items
+    @order_list = OrderList.new(order_list_params)
+    if @order_list.save
+      @line_items.each do |item|
+        item.id = nil
+        item.order_list_id = @order_list.id
+        item = item.attributes.compact
+        LineItem.create!(item)
+      end
       flash[:success] = 'オーダーリストを複製しました'
-      redirect_to order_lists_project_url(id: @order_list.project_id)
+      redirect_to order_lists_project_url(@order_list.project_id)
     else
       flash.now[:danger] = 'オーダーリストの複製に失敗しました'
-      render :copy
+      render :copy_set
     end
-    redirect_to order_lists_project_url(id: @order_list.project_id)
   end
   
   def set_order_list

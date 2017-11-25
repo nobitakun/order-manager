@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get '/order_lists/:id/copy_set', to: 'order_lists#copy_set', as: 'copy_set_order_list'
-  get '/order_lists/:id/copy', to: 'order_lists#copy', as: 'copy_order_list'
+  post '/order_lists/:id/copy', to: 'order_lists#copy', as: 'copy_order_list'
   
   get 'signup', to: 'users#new'
   resources :users

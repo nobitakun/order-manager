@@ -19,9 +19,9 @@ class OrdersController < ApplicationController
   end
 
   def new
+    # @line_items = Line_item.where id: line_item_params
     @project = Project.find(params[:id])
     @order = Order.new(project_id: @project.id)
-    @order.line_items.build
   end
   
   def create
@@ -59,6 +59,10 @@ class OrdersController < ApplicationController
   end
   
   private
+  
+  def line_item_params
+    params.require(:line_item).permit(line_item_ids: [])
+  end
   
   def set_order
      @order = Order.find(params[:id])

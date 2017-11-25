@@ -1,13 +1,6 @@
 <%= form_for(@order) do |f| %>
 
-  <% if current_page?(action: 'copy') %>
-    <div class="form-group">
-      <%= f.label :project_id, '顧客' %>
-      <%= f.collection_select(:project_id, Project.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>
-    </div>
-  <% else %>
-    <%= f.hidden_field :project_id, value: @project.id  %>
-  <% end %>
+  <%= f.hidden_field :project_id, value: @project.id  %>
   
   <div class="form-group">
     <%= f.label :name, '発注名称' %>
@@ -39,21 +32,10 @@
     <%= f.text_area :remark, class: 'form-control', size: '20x6' %>
   </div>
   
-  <div class="form-group">
-    <%= f.label :done, '発注済み' %>
-    <%= f.select :done, [['未発注', 'false'], ['発注済み', 'true']], {}, { class: 'form-control' } %>
-  </div>
-  
   <hr />
   
   <h2>部材登録</h2>
   
-  <%= link_to_add_association '明細を追加', f, :line_items,
-    class: 'btn btn-default',
-    data: {
-      association_insertion_node: '#detail-association-insertion-point',
-      association_insertion_method: 'append' }
-   %>
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -73,19 +55,6 @@
         <%= render 'line_item_fields', f: a %>
         <% end %>
       </tbody>
-      <script>
-        $(document).on('change', '.category-switch', function(){
-          var lineItemObjectId = $(this).attr('id');
-          console.log(lineItemObjectId);
-          var value = $(this).val();
-          console.log(value);
-          $.ajax({
-            type: "GET",
-            url: "<%= ajax_select_url%>",
-            data: `value=${value}&line_item_object_id=${lineItemObjectId}`
-          });
-        });
-      </script>
     </table>
   </div>
 
