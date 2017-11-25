@@ -3,8 +3,9 @@ class Project < ApplicationRecord
   
   validates :user_id, presence: true
   
+  has_many :order_lists, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :line_items, through: :orders
+  has_many :line_items, through: :order_lists
   
   after_initialize :set_default_value
   

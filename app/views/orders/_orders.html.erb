@@ -15,23 +15,19 @@
         </thead>
         <tbody>
         <% orders.each do |order| %>
-          <% if order.done %>
-            <tr class="table-dark">
-          <% else %>
-            <tr>
+          <tr>
+          <% if current_page?(controller: 'static_pages', action: 'home') %>
+            <td><%= order.project.name %></td>
           <% end %>
-            <% if current_page?(controller: 'static_pages', action: 'home') %>
-              <td><%= order.project.name %></td>
-            <% end %>
-              <td><%= order.name %></td>
-              <td><%= order.document_date %></td>
-              <td><%= calc_total(order).to_s(:delimited) %>円</td>
-              <td><%= calc_paid_total(order).to_s(:delimited) %>円</td>
-              <td>
-                <%= link_to '詳細', order_path(order), class: 'btn btn-secondary' %>
-                <%= link_to '編集', edit_order_path(order), class: 'btn btn-warning' %>
-              </td>
-            </tr>
+            <td><%= order.name %></td>
+            <td><%= order.document_date %></td>
+            <td><%= calc_total(order).to_s(:delimited) %>円</td>
+            <td><%= calc_paid_total(order).to_s(:delimited) %>円</td>
+            <td>
+              <%= link_to '詳細', order_path(order), class: 'btn btn-secondary' %>
+              <%= link_to '編集', edit_order_path(order), class: 'btn btn-warning' %>
+            </td>
+          </tr>
         <% end %>
       </table>
     </div>

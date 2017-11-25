@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_partner_order_kana, only: [:new, :edit, :copy]
+  before_action :set_partner_order_kana, only: [:new, :create, :edit, :copy]
   
   def index
   end
@@ -58,13 +58,6 @@ class OrdersController < ApplicationController
     redirect_to orders_project_url(id: @order.project_id)
   end
   
-  def copy
-    @old_order =  Order.find(params[:id])
-    @line_items = @old_order.line_items
-    @project = Project.find(@old_order.project_id)
-    @order =  @old_order.deep_dup
-  end
-  
   private
   
   def set_order
@@ -76,7 +69,7 @@ class OrdersController < ApplicationController
   end
   
   def order_params
-    params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, :staff, :done, :remark, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid])
+    params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, :staff, :remark)
   end
   
 end

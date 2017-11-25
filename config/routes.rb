@@ -5,14 +5,28 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  get '/order_lists/:id/copy', to: 'order_lists#copy', as: 'copy_order_list'
   get '/orders/:id/copy', to: 'orders#copy', as: 'copy_order'
   
   get 'signup', to: 'users#new'
   resources :users
   
+  resources :order_lists, only: [:index, :show, :create, :edit, :update, :destroy] do
+    member do
+      get :line_items
+    end
+  end
+  
   resources :orders, only: [:index, :show, :create, :edit, :update, :destroy] do
     member do
       get :line_items
+    end
+  end
+  
+  resources :projects do
+    member do
+       get :order_lists
+       resources :order_lists, only: [:new, :edit, :update]
     end
   end
   

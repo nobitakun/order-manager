@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :orders]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :orders, :order_lists]
   
   def index
     @projects = Project.order('created_at DESC').page(params[:page])
@@ -45,6 +45,9 @@ class ProjectsController < ApplicationController
   end
   
   def orders
+  end
+  
+  def order_lists
   end
   
   private

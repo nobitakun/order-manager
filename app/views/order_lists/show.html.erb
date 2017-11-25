@@ -1,0 +1,37 @@
+<h1><%= @order_list.project.name %>の<%= @order_list.name %>の詳細</h1>
+<section>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">項目</th>
+        <th scope="col">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">id</th>
+        <td><%= @order_list.id %></td>
+      </tr>
+      <tr>
+        <th scope="row">発注名称</th></th>
+        <td><%= @order_list.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">発注合計</th>
+        <td><%= calc_total(@order_list).to_s(:delimited) %>円</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>明細</h2>
+  <%= render 'line_items/line_items', line_items: @order_list.line_items %>
+</section>
+
+<section>
+  <%= link_to 'この顧客の発注管理へ', order_lists_project_path(id: @order_list.project_id), class: 'btn btn-lg btn-secondary' %>
+  <%= link_to '編集', edit_order_list_path(@order_list), class: 'btn btn-lg btn-warning' %>
+  <%= link_to '削除', @order_list, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+  <%= link_to '複製', copy_order_list_path(@order_list), class: 'btn btn-lg btn-warning' %>
+</section>

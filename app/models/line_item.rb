@@ -1,6 +1,6 @@
 class LineItem < ApplicationRecord
   belongs_to :item
-  belongs_to :order
+  belongs_to :order_list
   
   after_initialize :set_default_value
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123054017) do
+ActiveRecord::Schema.define(version: 20171124230739) do
 
   create_table "item_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -33,17 +33,25 @@ ActiveRecord::Schema.define(version: 20171123054017) do
     t.string "delivery_date"
     t.string "remark"
     t.bigint "item_id"
-    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "paid"
+    t.bigint "order_list_id"
+    t.boolean "done"
     t.index ["item_id"], name: "index_line_items_on_item_id"
-    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["order_list_id"], name: "index_line_items_on_order_list_id"
+  end
+
+  create_table "order_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_order_lists_on_project_id"
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "document_date"
-    t.boolean "done"
     t.bigint "partner_id"
     t.bigint "project_id"
     t.datetime "created_at", null: false
@@ -101,7 +109,8 @@ ActiveRecord::Schema.define(version: 20171123054017) do
 
   add_foreign_key "items", "item_categories"
   add_foreign_key "line_items", "items"
-  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "order_lists"
+  add_foreign_key "order_lists", "projects"
   add_foreign_key "orders", "partners"
   add_foreign_key "orders", "projects"
   add_foreign_key "projects", "users"

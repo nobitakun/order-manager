@@ -1,0 +1,62 @@
+<h1><%= @project.name %> 邸の発注管理</h1>
+<section>
+  <h2>発注サマリー</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">支払い合計金額(税込)</th>
+        <th scope="col">売り上げ</th>
+        <th scope="col">粗利</th>
+        <th scope="col">粗利率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= (@total = (calc_project_paid_total(@project) * 1.08.rationalize).floor).to_s(:delimited) %>円</td>
+        <td><%= @project.recipt.to_s(:delimited) %>円</td>
+        <td><%= (@gross_profit = (@project.recipt - @total)).to_s(:delimited) %>円</td>
+        <td><%= (@gross_profit.to_f / @project.recipt.to_f) * 100 %>%</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>発注金額</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">項目</th>
+        <th scope="col">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">発注合計</th>
+        <td><%= calc_project_total(@project).to_s(:delimited) %>円</td>
+      </tr>
+      <tr>
+        <th scope="row">支払合計</th>
+        <td><%= calc_project_paid_total(@project).to_s(:delimited) %>円</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<h2>オーダーリスト一覧</h2>
+
+<section>
+  <%= render 'order_lists/order_lists', order_lists: @project.order_lists %>
+  <%= link_to 'オーダーリスト新規作成', new_order_list_path(@project.id), class: 'btn btn-lg btn-primary' %>
+</section>
+
+<h2>発注書一覧</h2>
+
+<section>
+  <%= render 'orders/orders', orders: @project.orders %>
+</section>
+
+<h2>発注部材一覧</h2>
+<section>
+  <%= render 'line_items/line_items', line_items: @project.line_items %>
+</section>
