@@ -1,6 +1,6 @@
 <%= form_for(@order_list) do |f| %>
 
-  <% if current_page?(action: 'copy') %>
+  <% if current_page?(action: 'copy_set') %>
     <div class="form-group">
       <%= f.label :project_id, '顧客' %>
       <%= f.collection_select(:project_id, Project.all, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %>

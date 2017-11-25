@@ -1,6 +1,6 @@
 class OrderListsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_order_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_order_list, only: [:show, :edit, :update, :destroy, :copy]
   
   def index
   end
@@ -48,7 +48,7 @@ class OrderListsController < ApplicationController
     redirect_to order_lists_project_url(id: @order_list.project_id)
   end
   
-  def copy
+  def copy_set
     @old_order_list =  OrderList.find(params[:id])
     @line_items = @old_order_list.line_items
     @project = Project.find(@old_order_list.project_id)
@@ -59,7 +59,17 @@ class OrderListsController < ApplicationController
       item = item.attributes.compact
       LineItem.create!(item)
     end
-    redirect_to @project
+  end
+  
+  def copy
+    if @order_list.copy
+      flash[:success] = 'オーダーリストを複製しました'
+      redirect_to order_lists_project_url(id: @order_list.project_id)
+    else
+      flash.now[:danger] = 'オーダーリストの複製に失敗しました'
+      render :copy
+    end
+    redirect_to order_lists_project_url(id: @order_list.project_id)
   end
   
   def set_order_list

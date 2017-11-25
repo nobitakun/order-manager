@@ -33,5 +33,5 @@
   <%= link_to 'この顧客の発注管理へ', order_lists_project_path(id: @order_list.project_id), class: 'btn btn-lg btn-secondary' %>
   <%= link_to '編集', edit_order_list_path(@order_list), class: 'btn btn-lg btn-warning' %>
   <%= link_to '削除', @order_list, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
-  <%= link_to '複製', copy_order_list_path(@order_list), class: 'btn btn-lg btn-warning' %>
+  <%= link_to '複製', copy_set_order_list_path(@order_list), class: 'btn btn-lg btn-warning' %>
 </section>

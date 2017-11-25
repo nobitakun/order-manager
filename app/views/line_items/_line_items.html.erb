@@ -4,6 +4,7 @@
         <thead>
           <tr>
             <th>チェックボックス</th>
+            <th>ID</th>
             <th>名前</th>
             <% if current_page?(controller: 'projects', action: 'orders') %>
               <th>発注書名</th>
@@ -21,6 +22,7 @@
         <% line_items.order('id desc').each do |line_item| %>
           <tr>
             <td></td>
+            <td><%= line_item.id %></td>
             <td><%= line_item.item.name %></td>
             <% if current_page?(controller: 'projects', action: 'orders') %>
               <td><%= line_item.order.name %></td>
