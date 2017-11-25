@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
   end
 
   def new
-    # @line_items = Line_item.where id: line_item_params
     @project = Project.find(params[:id])
     @order = Order.new(project_id: @project.id)
   end
@@ -73,7 +72,7 @@ class OrdersController < ApplicationController
   end
   
   def order_params
-    params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, :staff, :remark)
+    params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, :staff, :remark, { line_item_ids: []})
   end
   
 end

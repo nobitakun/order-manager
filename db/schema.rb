@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124230739) do
+ActiveRecord::Schema.define(version: 20171125181545) do
+
+  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "order_id"
+    t.bigint "line_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_item_id"], name: "index_carts_on_line_item_id"
+    t.index ["order_id", "line_item_id"], name: "index_carts_on_order_id_and_line_item_id", unique: true
+    t.index ["order_id"], name: "index_carts_on_order_id"
+  end
 
   create_table "item_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -107,6 +117,8 @@ ActiveRecord::Schema.define(version: 20171124230739) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "carts", "line_items"
+  add_foreign_key "carts", "orders"
   add_foreign_key "items", "item_categories"
   add_foreign_key "line_items", "items"
   add_foreign_key "line_items", "order_lists"
