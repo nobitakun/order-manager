@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     
     if @order.save
       flash[:success] = '発注書を登録しました'
-      redirect_to orders_project_url(id: @order.project_id)
+      redirect_to order_lists_project_url(id: @order.project_id)
     else
       flash.now[:danger] = '発注書の登録に失敗しました'
       render :new
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     @project = Project.find(order_params[:project_id])
     if @order.update(order_params)
       flash[:success] = '発注書を編集しました'
-      redirect_to orders_project_url(id: @order.project_id)
+      redirect_to order_lists_project_url(id: @order.project_id)
     else
       flash.now[:danger] = '発注書の編集に失敗しました'
       render :edit
@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     flash[:success] = '発注書を削除しました'
-    redirect_to orders_project_url(id: @order.project_id)
+    redirect_to order_lists_project_url(id: @order.project_id)
   end
   
   private
