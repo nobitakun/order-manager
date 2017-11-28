@@ -42,6 +42,10 @@ class OrdersController < ApplicationController
   
   def update
     @project = Project.find(order_params[:project_id])
+    @line_items = LineItem.where(id: order_params[:line_item_ids])
+    @line_items.each do |line_item|
+      line_item.update(done: true)
+    end
     if @order.update(order_params)
       flash[:success] = '発注書を編集しました'
       redirect_to order_lists_project_url(id: @order.project_id)
@@ -59,9 +63,9 @@ class OrdersController < ApplicationController
   
   private
   
-  def line_item_params
-    params.require(:line_item).permit(line_item_ids: [])
-  end
+  # def line_item_params
+  #   params.require(:line_item).permit(line_item_ids: [])
+  # end
   
   def set_order
      @order = Order.find(params[:id])

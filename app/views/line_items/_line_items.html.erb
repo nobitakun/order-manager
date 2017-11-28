@@ -19,20 +19,24 @@
         </thead>
         <tbody>
           <% line_items.order('id desc').each do |line_item| %>
-            <tr>
-              <td><%= line_item.id %></td>
-              <td><%= line_item.item.name %></td>
-              <% if current_page?(controller: 'projects', action: 'orders') %>
-                <td><%= line_item.order_list.name %></td>
-              <% end %>
-              <td><%= line_item.item.price.to_s(:delimited) %>円</td>
-              <td><%= line_item.quantity %></td>
-              <td><%= line_item.item.unit %></td>
-              <td><%= calc_sub_total(line_item).to_s(:delimited) %>円</td>
-              <td><%= line_item.delivery_date %></td>
-              <td><%= line_item.remark %></td>
-              <td><%= line_item.paid.to_s(:delimited) %>円
-            </tr>
+            <% if line_item.carts.any? %>
+              <tr class="table-dark">
+            <% else %>
+              <tr>
+            <% end %>
+                <td><%= line_item.id %></td>
+                <td><%= line_item.item.name %></td>
+                <% if current_page?(controller: 'projects', action: 'orders') %>
+                  <td><%= line_item.order_list.name %></td>
+                <% end %>
+                <td><%= line_item.item.price.to_s(:delimited) %>円</td>
+                <td><%= line_item.quantity %></td>
+                <td><%= line_item.item.unit %></td>
+                <td><%= calc_sub_total(line_item).to_s(:delimited) %>円</td>
+                <td><%= line_item.delivery_date %></td>
+                <td><%= line_item.remark %></td>
+                <td><%= line_item.paid.to_s(:delimited) %>円
+              </tr>
           <% end %>
         </tbody>
       </table>
