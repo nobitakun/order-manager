@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129105938) do
+ActiveRecord::Schema.define(version: 20171129142314) do
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "order_id"
@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(version: 20171129105938) do
     t.integer "paid"
     t.bigint "order_list_id"
     t.integer "unit_price"
+    t.bigint "partner_id"
     t.index ["item_id"], name: "index_line_items_on_item_id"
     t.index ["order_list_id"], name: "index_line_items_on_order_list_id"
+    t.index ["partner_id"], name: "index_line_items_on_partner_id"
   end
 
   create_table "order_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -61,7 +63,6 @@ ActiveRecord::Schema.define(version: 20171129105938) do
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "document_date"
-    t.bigint "partner_id"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,7 +71,6 @@ ActiveRecord::Schema.define(version: 20171129105938) do
     t.string "staff"
     t.string "remark"
     t.integer "discount"
-    t.index ["partner_id"], name: "index_orders_on_partner_id"
     t.index ["project_id"], name: "index_orders_on_project_id"
   end
 
@@ -122,8 +122,8 @@ ActiveRecord::Schema.define(version: 20171129105938) do
   add_foreign_key "items", "item_categories"
   add_foreign_key "line_items", "items"
   add_foreign_key "line_items", "order_lists"
+  add_foreign_key "line_items", "partners"
   add_foreign_key "order_lists", "projects"
-  add_foreign_key "orders", "partners"
   add_foreign_key "orders", "projects"
   add_foreign_key "projects", "users"
 end

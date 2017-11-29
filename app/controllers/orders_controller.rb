@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_partner_order_kana, only: [:new, :create, :edit, :copy]
   
   def index
   end
@@ -68,12 +67,8 @@ class OrdersController < ApplicationController
      @order = Order.find(params[:id])
   end
   
-  def set_partner_order_kana
-    @partner = Partner.order(:kana)
-  end
-  
   def order_params
-    params.require(:order).permit(:name, :document_date, :project_id, :partner_id, :destination, :staff, :remark, :discount, { line_item_ids: []})
+    params.require(:order).permit(:name, :document_date, :project_id, :destination, :staff, :remark, :discount, { line_item_ids: []})
   end
   
 end

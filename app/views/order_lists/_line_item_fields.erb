@@ -4,6 +4,7 @@
   <td><%= f.text_field :unit_price, class: 'form-control unit-price-field', id: "#{f.object_name}-price" %></td>
   <td><%= f.text_field :quantity, class: 'form-control quantity-field', id: "#{f.object_name}-" %></td>
   <td><%= text_field :nouse, f.object_name, { placeholder: (f.object[:unit_price].to_i * f.object[:quantity].to_i).to_s(:delimited), id: "#{f.object_name}-subtotal", class: 'form-control', disabled: true } %></td>
+  <td><%= f.collection_select(:partner_id, @partner, :id, :name, { prompt: "未選択" }, { class: 'form-control' }) %></td>
   <td><%= f.text_field :delivery_date, class: 'form-control date-picker' %></td>
   <td><%= f.text_field :remark, class: 'form-control' %></td>
   <td><%= f.text_field :paid, class: 'form-control' %></td>

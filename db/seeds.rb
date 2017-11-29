@@ -45,7 +45,6 @@ gaiheki.save!
 
 gaiheki.items.create(name: '東レ タテスリーライン', unit: '㎡')
 
-ItemCategory.create(name: '外壁')
 ItemCategory.create(name: '窓 ドア')
 ItemCategory.create(name: '基礎')
 ItemCategory.create(name: '床')

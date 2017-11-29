@@ -31,11 +31,11 @@
 <table id="partnerTable">
   <tr>
     <th>発注先名</th>
-    <td><%= Partner.find(@order.partner_id).name %> 御中</td>
+    <td><%= @order.partners.first.name %> 御中</td>
   </tr>
   <tr>
     <th>ご担当者名</th>
-    <td><%= Partner.find(@order.partner_id).staff %> 様</td>
+    <td><%= @order.partners.first.staff %> 様</td>
   </tr>
 </table>
 

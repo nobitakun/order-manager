@@ -1,8 +1,9 @@
 class LineItem < ApplicationRecord
   belongs_to :item
   belongs_to :order_list
+  belongs_to :partner
   
-  has_many :carts
+  has_many :carts, dependent: :destroy
   has_many :orders, through: :carts
   
   after_initialize :set_default_unit_price
