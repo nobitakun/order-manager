@@ -30,8 +30,22 @@
       </tr>
       <tr>
         <th scope="row">発注合計</th>
-        <td><%= calc_total(@order).to_s(:delimited) %>円</td>
+        <td><%= (total = calc_total(@order)).to_s(:delimited) %>円</td>
       </tr>
+      <tr>
+        <th scope="row">発注合計(税込)</th>
+        <td><%= (total * 1.08).floor.to_s(:delimited) %>円</td>
+      </tr>
+      <% if @order.discount %>
+        <tr>
+          <th scope="row">値引き額</th>
+          <td><span style="color: red;">-<%= @order.discount.to_s(:delimited) %>円</span></td>
+        </tr>
+        <tr>
+          <th scope="row">値引き後発注合計</th>
+          <td><%= ((total * 1.08).floor - @order.discount).to_s(:delimited) %>円</span></td>
+        </tr>
+      <% end %>
       <tr>
         <th scope="row">支払い合計</th>
         <td><%= calc_paid_total(@order).to_s(:delimited) %>円</td>
@@ -50,7 +64,7 @@
 </section>
 
 <section>
-  <%= link_to 'この顧客の発注管理へ', orders_project_path(id: @order.project_id), class: 'btn btn-lg btn-secondary' %>
+  <%= link_to 'この顧客の発注管理へ', order_lists_project_path(id: @order.project_id), class: 'btn btn-lg btn-secondary' %>
   <%= link_to '編集', edit_order_path(@order), class: 'btn btn-lg btn-warning' %>
   <%= link_to '削除', @order, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
   <%= link_to 'PDF', request.path_info + '.pdf', class: 'btn btn-lg btn-info' %>

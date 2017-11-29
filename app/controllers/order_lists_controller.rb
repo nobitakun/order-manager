@@ -80,11 +80,23 @@ class OrderListsController < ApplicationController
     end
   end
   
+  def ajax_calc_subtotal
+    if params[:value].present?
+      @items = Item.where(item_category_id: params[:value])
+    else
+      @items = Item.all
+    end
+    
+    @target_id = params[:tar_id]
+  end
+  
+  private
+  
   def set_order_list
     @order_list = OrderList.find(params[:id])
   end
   
   def order_list_params
-    params.require(:order_list).permit(:name, :project_id, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid])
+    params.require(:order_list).permit(:name, :project_id, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid, :unit_price])
   end
 end

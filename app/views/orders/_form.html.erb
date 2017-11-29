@@ -28,6 +28,11 @@
   </div>
   
   <div class="form-group">
+    <%= f.label :discount, '値引き額' %>
+    <%= f.text_field :discount, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :remark, '備考' %>
     <%= f.text_area :remark, class: 'form-control', size: '20x6' %>
   </div>
@@ -66,7 +71,7 @@
               <% end %>
                   <td><%= line_item.id %></td>
                   <td><%= item.name %></td>
-                  <td><%= item.price.to_s(:delimited) %>円</td>
+                  <td><%= line_item.unit_price.to_s(:delimited) %>円</td>
                   <td><%= line_item.quantity %></td>
                   <td><%= item.unit %></td>
                   <td><%= calc_sub_total(line_item).to_s(:delimited) %>円</td>

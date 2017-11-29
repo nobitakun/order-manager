@@ -11,11 +11,6 @@
   </div>
   
   <div class="form-group">
-    <%= f.label :price, '単価' %>
-    <%= f.text_field :price, class: 'form-control' %>
-  </div>
-  
-  <div class="form-group">
     <%= f.label :unit, '単位' %>
     <%= f.select :unit, [['㎡', '㎡'], ['枚', '枚'], ['個', '個'], ['本', '本']], { prompt: "未選択" }, { class: 'form-control' } %>
   </div>

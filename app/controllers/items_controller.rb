@@ -32,7 +32,6 @@ class ItemsController < ApplicationController
       flash.now[:danger] = '部材の編集に失敗しました'
       render :edit
     end
-      
   end
 
   def destroy

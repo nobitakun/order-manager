@@ -44,5 +44,6 @@ Rails.application.routes.draw do
   resources :item_categories, only: [:index, :new, :create, :edit, :update, :destroy]
   
   get 'ajax_select', to: 'items#ajax_select', as: 'ajax_select'
+  get 'ajax_calc_subtotal', to: 'order_lists#ajax_calc_subtotal', as: 'ajax_calc_subtotal'
   
 end

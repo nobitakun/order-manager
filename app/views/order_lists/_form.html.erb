@@ -28,10 +28,11 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">object id</th>
           <th scope="col">部材カテゴリー</th>
           <th scope="col">部材</th>
+          <th scope="col">単価</th>
           <th scope="col">数量</th>
+          <th scope="col">小計</th>
           <th scope="col">納期</th>
           <th scope="col">備考</th>
           <th scope="col">支払い金額</th>
@@ -46,14 +47,20 @@
       <script>
         $(document).on('change', '.category-switch', function(){
           var lineItemObjectId = $(this).attr('id');
-          console.log(lineItemObjectId);
           var value = $(this).val();
-          console.log(value);
           $.ajax({
             type: "GET",
             url: "<%= ajax_select_url%>",
             data: `value=${value}&line_item_object_id=${lineItemObjectId}`
           });
+        });
+        $(document).on('change', '.quantity-field', function(){
+          var tarId = $(this).attr('id');
+          var tarQuantity = $(this).val();
+          var escapeTarId = tarId.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, "\\$&");
+          var tarPrice = $('#' + escapeTarId + 'price').val();
+          var tarSubTotal = tarPrice * tarQuantity;
+          $('#' + escapeTarId + 'subtotal').val(tarSubTotal.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,'));
         });
       </script>
     </table>

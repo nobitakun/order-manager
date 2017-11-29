@@ -36,6 +36,18 @@
         <td><%= calc_project_total(@project).to_s(:delimited) %>円</td>
       </tr>
       <tr>
+        <th scope="row">発注合計(税込)</th>
+        <td><%= (total = (calc_project_total(@project) * 1.08).floor).to_s(:delimited) %>円</td>
+      </tr>
+      <tr>
+        <th scope="row">値引き合計</th>
+        <td><span style="color: red;">-<%= (discount = calc_project_discount(@project)).to_s(:delimited) %>円</span></td>
+      </tr>
+      <tr>
+        <th scope="row">値引き後発注合計(税込)</th>
+        <td><%= (total - discount).to_s(:delimited) %>円</span></td>
+      </tr>
+      <tr>
         <th scope="row">支払合計</th>
         <td><%= calc_project_paid_total(@project).to_s(:delimited) %>円</td>
       </tr>

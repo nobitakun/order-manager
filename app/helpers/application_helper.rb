@@ -28,7 +28,7 @@ module ApplicationHelper
   end
         
   def calc_sub_total(line_item)
-    @line_item_sub_total = line_item.quantity * line_item.item.price
+    @line_item_sub_total = line_item.quantity * line_item.unit_price
   end
   
   def calc_total(order)
@@ -45,6 +45,16 @@ module ApplicationHelper
       @project_total += calc_sub_total(line_item)
     end
     return @project_total
+  end
+  
+  def calc_project_discount(project)
+    @project_discount = 0
+    project.orders.each do |order|
+      if order.discount
+        @project_discount += order.discount
+      end
+    end
+    return @project_discount
   end
   
   def calc_paid_total(order)
