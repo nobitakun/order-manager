@@ -14,7 +14,7 @@
           <tr>
             <th>発注先名</th>
             <th>担当者</th>
-            <th>発注数</th>
+            <th>オーダーリスト内の部材数</th>
             <th></th>
           </tr>
         </thead>
@@ -23,7 +23,7 @@
           <tr>
             <td><%= link_to partner.name, partner_path(partner) %></td>
             <td><%= partner.staff %></td>
-            <td><%= Order.where(partner_id: partner.id).count %></td>
+            <td><%= LineItem.where(partner_id: partner.id).count %></td>
             <td>
               <%= link_to '詳細', partner_path(partner), class: 'btn btn-secondary' %>
             </td>
