@@ -6,15 +6,23 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to 'データーベース図', dbmap_path, class: 'nav-link' %>
-      </li>
+      <% if logged_in? %>
+        <% if current_user.root %>
+          <li class="nav-item">
+            <%= link_to 'データーベース図', dbmap_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      <% end %>
       <li class="nav-item">
         <%= link_to 'ユーザー一覧', users_path, class: 'nav-link' %>
       </li>
-      <li class="nav-item">
-        <%= link_to 'ユーザー登録', signup_path, class: 'nav-link' %>
-      </li>
+      <% if logged_in? %>
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to 'ユーザー登録', signup_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      <% end %>
       <li class="nav-item">
         <% if logged_in? %>
           <%= link_to 'ログアウト', logout_path, method: :delete,class: 'nav-link' %>

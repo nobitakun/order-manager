@@ -6,11 +6,45 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+# ユーザー登録
+root_user = User.new(name: 'root user', email: 'root@root.com', root: true, admin: true)
+root_user.password = 'root'
+root_user.password_confirmation = 'root'
+root_user.save!
+
+admin_user = User.new(name: '管理者', email: 'admin@admin.com', root: false, admin: true)
+admin_user.password = 'admin'
+admin_user.password_confirmation = 'admin'
+admin_user.save!
+
+test_user = User.new(name: 'テストユーザー', email: 'test@test.com', root: false, admin: false)
+test_user.password = 'test'
+test_user.password_confirmation = 'test'
+test_user.save!
+
+# 顧客登録
+admin_user.projects.create(name: '雛形', code: '000')
+admin_user.projects.create(name: 'テスト顧客', current_postal_code: '330-0001', postal_code: '150-0001', current_adress: '埼玉県さいたま市中央区某所', adress: '東京都渋谷区神宮前1-2-3', current_phone: '048-123-1234', phone: '03-1234-1234', owner_phone: '090-1234-5678', code: '001')
+
+# 部材カテゴリー&部材登録
 ItemCategory.create(name: '養生 足場 産廃')
 ItemCategory.create(name: '建築資材 外部用')
 ItemCategory.create(name: '建築資材 内部用')
 ItemCategory.create(name: '構造躯体')
-ItemCategory.create(name: '屋根')
+
+yane = ItemCategory.new(name: '屋根')
+yane.save!
+
+yane.items.create(name: 'コロニアルクアッド', unit: '㎡')
+yane.items.create(name: 'コロニアルグラッサ', unit: '㎡')
+yane.items.create(name: '瓦 スーパートライ', unit: '㎡')
+
+gaiheki = ItemCategory.new(name: '外壁')
+gaiheki.save!
+
+gaiheki.items.create(name: '東レ タテスリーライン', unit: '㎡')
+
 ItemCategory.create(name: '外壁')
 ItemCategory.create(name: '窓 ドア')
 ItemCategory.create(name: '基礎')
@@ -35,6 +69,7 @@ ItemCategory.create(name: '構造図')
 ItemCategory.create(name: '管理費 運送費')
 ItemCategory.create(name: 'その他')
 
+#発注先登録
 Partner.create(name: '株式会社 ハヤカワ', kana: 'はやかわ', postal_code: '273-0853', adress: '船橋市金杉8丁目20-5', phone: '047-448-6711', fax: '047-448-6610', staff: '大島', staff_phone: '080-5542-0071')
 Partner.create(name: '株式会社 海山商事', kana: 'うみやましょうじ', postal_code: '150-0001', adress: '東京都渋谷区神宮前1-2-3', phone: '03-1234-5678', fax: '03-1234-5679', staff: '渡辺', staff_phone: '090-9999-9999')
 Partner.create(name: '株式会社 山川商事', kana: 'やまかわしょうじ', postal_code: '150-0022', adress: '東京都港区南青山3-3-3', phone: '03-1111-2222', fax: '03-1111-2223', staff: '斎藤', staff_phone: '090-1111-2222')
