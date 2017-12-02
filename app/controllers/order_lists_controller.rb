@@ -1,7 +1,7 @@
 class OrderListsController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_order_list, only: [:show, :edit, :update, :destroy, :copy]
-  before_action :set_partner_order_kana, only: [:new, :create, :edit, :copy]
+  before_action :set_partner_order_kana, only: [:new, :create, :edit, :update, :copy_set, :copy]
   
   def index
   end

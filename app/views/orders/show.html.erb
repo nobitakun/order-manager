@@ -26,7 +26,11 @@
       </tr>
       <tr>
         <th scope="row">発注先</th>
-        <td><%= @order.partners.first.name %></td>
+        <% if @order.partners.any? %>
+          <td><%= @order.partners.first.name %></td>
+        <% else %>
+          <td>発注書に部材が登録されていません</td>
+        <% end %>
       </tr>
       <tr>
         <th scope="row">発注合計</th>

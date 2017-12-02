@@ -29,6 +29,7 @@
 </div>
 
 <table id="partnerTable">
+  <% if @order.partners.any? %>
   <tr>
     <th>発注先名</th>
     <td><%= @order.partners.first.name %> 御中</td>
@@ -37,6 +38,11 @@
     <th>ご担当者名</th>
     <td><%= @order.partners.first.staff %> 様</td>
   </tr>
+  <% else %>
+  <tr>
+    <td>発注書に部材が登録されていません</td>
+  </tr>
+  <% end %>
 </table>
 
 <% if @order.line_items.any? %>

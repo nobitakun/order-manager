@@ -3,6 +3,8 @@ class LineItem < ApplicationRecord
   belongs_to :order_list
   belongs_to :partner
   
+  validates :partner, presence: true
+  
   has_many :carts, dependent: :destroy
   has_many :orders, through: :carts
   

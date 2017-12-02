@@ -55,14 +55,6 @@
             data: `value=${value}&line_item_object_id=${lineItemObjectId}`
           });
         });
-        $(document).on('change', '.quantity-field', function(){
-          var tarId = $(this).attr('id');
-          var tarQuantity = $(this).val();
-          var escapeTarId = tarId.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, "\\$&");
-          var tarPrice = $('#' + escapeTarId + 'price').val();
-          var tarSubTotal = tarPrice * tarQuantity;
-          $('#' + escapeTarId + 'subtotal').val(tarSubTotal.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,'));
-        });
       </script>
     </table>
   </div>
