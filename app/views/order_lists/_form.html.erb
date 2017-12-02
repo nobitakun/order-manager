@@ -1,5 +1,7 @@
 <%= form_for(@order_list) do |f| %>
 
+  <%= render 'shared/error_messages', object: f.object %>
+
   <% if current_page?(action: 'copy_set') %>
     <div class="form-group">
       <%= f.label :project_id, '顧客' %>
@@ -54,6 +56,14 @@
             url: "<%= ajax_select_url%>",
             data: `value=${value}&line_item_object_id=${lineItemObjectId}`
           });
+        });
+        $(document).on('change', '.quantity-field', function(){
+          var tarId = $(this).attr('id');
+          var tarQuantity = $(this).val();
+          var escapeTarId = tarId.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, "\\$&");
+          var tarPrice = $('#' + escapeTarId + 'price').val();
+          var tarSubTotal = tarPrice * tarQuantity;
+          $('#' + escapeTarId + 'subtotal').val(tarSubTotal.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,'));
         });
       </script>
     </table>

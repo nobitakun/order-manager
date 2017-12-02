@@ -1,5 +1,7 @@
 <%= form_for(@order) do |f| %>
 
+  <%= render 'shared/error_messages', object: f.object %>
+
   <%= f.hidden_field :project_id, value: @project.id  %>
   
   <div class="form-group">
@@ -34,7 +36,7 @@
   
   <hr />
   
-  <% if !current_page?(controller: 'orders', action: 'new') %>
+  <%# if !current_page?(controller: 'orders', action: 'new') %>
   <h2>部材登録</h2>
     <% if @project.line_items.any? %>
       <div class="table-responsive">
@@ -83,7 +85,7 @@
     <% else %>
     <p>明細はありません</p>
     <% end %>
-  <% end %>
+  <%# end %>
   
   <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
 <% end %>

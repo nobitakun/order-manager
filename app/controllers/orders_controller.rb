@@ -23,14 +23,13 @@ class OrdersController < ApplicationController
   end
   
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(only_order_params)
     @project = Project.find(order_params[:project_id])
     
-    if @order.save
+    if @order.save && @order.update(order_params)
       flash[:success] = '発注書を登録しました'
       redirect_to order_lists_project_url(id: @order.project_id)
     else
-      flash.now[:danger] = '発注書の登録に失敗しました'
       render :new
     end
   end
@@ -46,7 +45,6 @@ class OrdersController < ApplicationController
       flash[:success] = '発注書を編集しました'
       redirect_to @order
     else
-      flash.now[:danger] = '発注書の編集に失敗しました'
       render :edit
     end
   end
@@ -59,10 +57,6 @@ class OrdersController < ApplicationController
   
   private
   
-  # def line_item_params
-  #   params.require(:line_item).permit(line_item_ids: [])
-  # end
-  
   def set_order
      @order = Order.find(params[:id])
   end
@@ -71,4 +65,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:name, :document_date, :project_id, :destination, :staff, :remark, :discount, { line_item_ids: []})
   end
   
+  def only_order_params
+    params.require(:order).permit(:name, :document_date, :project_id, :destination, :staff, :remark, :discount)
+  end
 end

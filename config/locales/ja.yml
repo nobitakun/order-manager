@@ -6,3 +6,26 @@ ja:
       user:
         name: 名前
         password: パスワード
+      item_category:
+        name: 部材カテゴリー名
+      item:
+        name: 部材名
+        item_category_id: 部材カテゴリー
+        unit: 単位
+      partner:
+        name: 発注先名
+        kana: よみがな
+      project:
+        name: 顧客名
+        recipt: 売り上げ
+      order_list:
+        name: 発注リスト名
+      order_list/line_items:
+        partner_id: 発注先
+        item_id: 部材
+        unit_price: 単価
+        quantity: 数量
+        paid: 支払い金額
+      order:
+        name: 発注名称
+        discount: 値引き額

@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
       flash[:success] = '部材を登録しました'
       redirect_to items_url
     else
-      flash.now[:danger] = '部材の登録に失敗しました'
       render :new
     end
   end
@@ -29,15 +28,12 @@ class ItemsController < ApplicationController
       flash[:success] = '部材を編集しました'
       redirect_to items_url
     else
-      flash.now[:danger] = '部材の編集に失敗しました'
       render :edit
     end
   end
 
   def destroy
     @item.destroy
-    
-    flash[:success] = '部材を削除しました'
     redirect_to items_url
   end
   

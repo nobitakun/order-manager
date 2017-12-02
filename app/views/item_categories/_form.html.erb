@@ -1,4 +1,7 @@
 <%= form_for(@item_category) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
   <div class="form-group">
     <%= f.label :name, '部材カテゴリー名' %>
     <%= f.text_field :name, class: 'form-control' %>

@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
       flash[:success] = '顧客登録しました'
       redirect_to @project
     else
-      flash.now[:danger] = '顧客の登録に失敗しました'
       render :new
     end
   end
@@ -33,7 +32,6 @@ class ProjectsController < ApplicationController
       flash[:success] = '顧客を編集しました'
       redirect_to @project
     else
-      flash.now[:danger] = '顧客の編集に失敗しました'
       render :edit
     end
   end

@@ -107,7 +107,7 @@
       <th>税込合計</th>
       <td>¥<%= (total * 1.08).floor.to_s(:delimited) %></td>
     </tr>
-    <% if @order.discount %>
+    <% if @order.discount > 0 %>
       <tr>
         <th scope="row">値引き額</th>
         <td><span style="color: red;">-¥<%= @order.discount.to_s(:delimited) %></span></td>

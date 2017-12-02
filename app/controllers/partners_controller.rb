@@ -20,7 +20,6 @@ class PartnersController < ApplicationController
       flash[:success] = '発注先を登録しました'
       redirect_to @partner
     else
-      flash.now[:danger] = '発注先の登録に失敗しました'
       render :new
     end
   end
@@ -33,7 +32,6 @@ class PartnersController < ApplicationController
       flash[:success] = '発注先を編集しました'
       redirect_to @partner
     else
-      flash.now[:danger] = '発注先の編集に失敗しました'
       render :edit
     end
   end

@@ -23,7 +23,6 @@ class OrderListsController < ApplicationController
       flash[:success] = 'オーダーリストを登録しました'
       redirect_to order_lists_project_url(id: @order_list.project_id)
     else
-      flash.now[:danger] = 'オーダーリストの登録に失敗しました'
       render :new
     end
   end
@@ -33,12 +32,11 @@ class OrderListsController < ApplicationController
   end
   
   def update
-    @project = Project.find(order_list_params[:project_id])
-    if @order_list.update(order_list_params)
+    @project = Project.find(update_order_list_params[:project_id])
+    if @order_list.update(update_order_list_params)
       flash[:success] = 'オーダーリストを編集しました'
       redirect_to order_lists_project_url(id: @order_list.project_id)
     else
-      flash.now[:danger] = 'オーダーリストの編集に失敗しました'
       render :edit
     end
   end
@@ -54,12 +52,6 @@ class OrderListsController < ApplicationController
     @line_items = @old_order_list.line_items
     @project = Project.find(@old_order_list.project_id)
     @order_list =  OrderList.new(name: @old_order_list.name + "~コピー", project_id: @old_order_list.project_id)
-    # @line_items.each do |item|
-    #   item.id = nil
-    #   item.order_list_id = @order_list.id
-    #   item = item.attributes.compact
-    #   LineItem.create!(item)
-    # end
   end
   
   def copy
@@ -99,6 +91,10 @@ class OrderListsController < ApplicationController
   
   def order_list_params
     params.require(:order_list).permit(:name, :project_id, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid, :unit_price, :partner_id])
+  end
+  
+  def update_order_list_params
+    params.require(:order_list).permit(:name, :project_id, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid, :unit_price, :partner_id, :_destroy])
   end
   
   def set_partner_order_kana

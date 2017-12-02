@@ -16,7 +16,6 @@ class ItemCategoriesController < ApplicationController
       flash[:success] = '部材カテゴリーを登録しました'
       redirect_to item_categories_url
     else
-      flash.now[:danger] = '部材カテゴリーの登録に失敗しました'
       render :new
     end
   end
@@ -29,7 +28,6 @@ class ItemCategoriesController < ApplicationController
       flash[:success] = '部材カテゴリーを編集しました'
       redirect_to item_categories_url
     else
-      flash.now[:danger] = '部材カテゴリーの編集に失敗しました'
       render :edit
     end
   end

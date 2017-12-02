@@ -1,4 +1,6 @@
 <%= form_for(@item) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
   
   <div class="form-group">
     <%= f.label :item_category_id, 'カテゴリー' %>

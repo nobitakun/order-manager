@@ -1,9 +1,13 @@
 class LineItem < ApplicationRecord
-  belongs_to :item
+  belongs_to :item, optional: true
   belongs_to :order_list
-  belongs_to :partner
+  belongs_to :partner, optional: true
   
-  validates :partner, presence: true
+  validates :partner_id, presence: true
+  validates :item_id, presence: true
+  validates :unit_price, presence: true, length: { maximum: 18 }, numericality: true
+  validates :quantity, presence: true, length: { maximum: 18 }, numericality: true
+  validates :paid, presence: true, length: { maximum: 18 }, numericality: true
   
   has_many :carts, dependent: :destroy
   has_many :orders, through: :carts
