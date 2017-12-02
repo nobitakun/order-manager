@@ -28,6 +28,9 @@ module OrderManager
     # Don't generate system test files.
     config.generators.system_tests = nil
     
+    # 日本語対応
+    config.i18n.default_locale = :ja
+    
     # フォント追加
     config.assets.paths << "#{Rails}/vender/assets/fonts"
   end

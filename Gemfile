@@ -34,6 +34,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem "cocoon"
+gem 'rails-i18n'
 
 # pdf export
 gem 'wkhtmltopdf-binary'

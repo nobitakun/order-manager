@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       flash[:success] = 'ユーザー登録しました'
       redirect_to @user
     else
-      flash.now[:danger] = 'ユーザーの登録に失敗しました'
       render :new
     end
   end
@@ -33,7 +32,6 @@ class UsersController < ApplicationController
       flash[:success] = 'ユーザー情報を変更しました'
       redirect_to @user
     else
-      flash.now[:danger] = 'ユーザー情報の変更に失敗しました'
       render :edit
     end
   end
