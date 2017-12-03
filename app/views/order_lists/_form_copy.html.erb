@@ -25,7 +25,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">object id</th>
+          <% if current_user.root %>
+            <th scope="col">object id</th>
+          <% end %>
           <th scope="col">部材</th>
           <th scope="col">数量</th>
           <th scope="col">納期</th>
@@ -37,7 +39,9 @@
       <tbody id="detail-association-insertion-point">
         <%= f.fields_for :line_items do |a| %>
         <tr class="nested-fields">
-          <td><%= a.object_name %></td>
+          <% if current_user.root %>
+            <td><%= a.object_name %></td>
+          <% end %>
           <td id="item-select-<%= a.object_name %>"><%= a.collection_select(:item_id, Item.all, :id, :name, {}, { class: 'form-control', disabled: true } ) %></td>
           <td><%= a.text_field :quantity, class: 'form-control', readonly: true %></td>
           <td><%= a.text_field :delivery_date, class: 'form-control date-picker', readonly: true %></td>

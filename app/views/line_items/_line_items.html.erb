@@ -3,7 +3,9 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <th>名前</th>
             <% if current_page?(controller: 'projects', action: 'orders') %>
               <th>発注書名</th>
@@ -25,7 +27,9 @@
             <% else %>
               <tr>
             <% end %>
-                <td><%= line_item.id %></td>
+                <% if current_user.root %>
+                  <td><%= line_item.id %></td>
+                <% end %>
                 <td><%= line_item.item.name %></td>
                 <% if current_page?(controller: 'projects', action: 'orders') %>
                   <td><%= line_item.order_list.name %></td>

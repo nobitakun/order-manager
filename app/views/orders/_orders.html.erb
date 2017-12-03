@@ -3,6 +3,9 @@
       <table class="table">
         <thead>
           <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <% if current_page?(controller: 'static_pages', action: 'home') %>
               <th>顧客名</th>
             <% end %>
@@ -16,6 +19,9 @@
         <tbody>
         <% orders.each do |order| %>
           <tr>
+          <% if current_user.root %>
+            <td><%= order.id %></td>
+          <% end %>
           <% if current_page?(controller: 'static_pages', action: 'home') %>
             <td><%= order.project.name %></td>
           <% end %>

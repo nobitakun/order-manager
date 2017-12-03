@@ -13,6 +13,9 @@
       <table class="table">
         <thead>
           <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <th>名前</th>
             <th>カテゴリー</th>
             <th>発注単位</th>
@@ -22,6 +25,9 @@
         <tbody>
         <% @items.each do |item| %>
           <tr>
+            <% if current_user.root %>
+              <td><%= item.id %></td>
+            <% end %>
             <td><%= item.name %></td>
             <td><%= item.item_category.name %></td>
             <td><%= item.unit %></td>

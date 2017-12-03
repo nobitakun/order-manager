@@ -12,6 +12,9 @@
       <table class="table">
         <thead>
           <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <th>名前</th>
             <th>登録部材数</th>
             <th></th>
@@ -20,6 +23,9 @@
         <tbody>
         <% @item_categories.each do |item_category| %>
           <tr>
+            <% if current_user.root %>
+              <td><%= item_category.id %></td>
+            <% end %>
             <td><%= item_category.name %></td>
             <td><%= Item.where(item_category_id: item_category.id).count %></td>
             <td>

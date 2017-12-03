@@ -69,7 +69,7 @@
   <%= link_to '発注書新規作成', new_order_path(@project.id), class: 'btn btn-lg btn-primary' %>
 </section>
 
-<h2>(全オーダーリストの)発注部材一覧</h2>
+<h2>発注部材一覧</h2>
 <section>
   <%= render 'line_items/line_items', line_items: @project.line_items %>
 </section>

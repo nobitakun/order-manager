@@ -30,6 +30,9 @@
     <table class="table">
       <thead>
         <tr>
+          <% if current_user.root %>
+            <th scope="col">object id</th>
+          <% end %>
           <th scope="col">部材カテゴリー</th>
           <th scope="col">部材</th>
           <th scope="col">単価</th>

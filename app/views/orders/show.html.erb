@@ -8,10 +8,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">id</th>
-        <td><%= @order.id %></td>
-      </tr>
+      <% if current_user.root %>
+        <tr>
+          <th scope="row">id</th>
+          <td><%= @order.id %></td>
+        </tr>
+      <% end %>
       <tr>
         <th scope="row">発注名称</th></th>
         <td><%= @order.name %></td>

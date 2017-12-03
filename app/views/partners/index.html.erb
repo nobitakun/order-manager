@@ -12,6 +12,9 @@
       <table class="table">
         <thead>
           <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <th>発注先名</th>
             <th>担当者</th>
             <th>オーダーリスト内の部材数</th>
@@ -21,6 +24,9 @@
         <tbody>
         <% @partners.each do |partner| %>
           <tr>
+            <% if current_user.root %>
+              <td><%= partner.id %></td>
+            <% end %>
             <td><%= link_to partner.name, partner_path(partner) %></td>
             <td><%= partner.staff %></td>
             <td><%= LineItem.where(partner_id: partner.id).count %></td>

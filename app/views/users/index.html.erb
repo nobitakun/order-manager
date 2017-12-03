@@ -6,6 +6,9 @@
       <table class="table">
         <thead>
           <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <th>名前</th>
             <th>email</th>
             <th>root</th>
@@ -16,6 +19,9 @@
         <tbody>
         <% @users.each do |user| %>
           <tr>
+            <% if current_user.root %>
+              <td><%= user.id %></td>
+            <% end %>
             <td><%= link_to user.name, user_path(user) %></td>
             <td><%= user.email %></td>
             <td><%= user.root %></td>

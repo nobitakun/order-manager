@@ -12,6 +12,9 @@
       <table class="table">
         <thead>
           <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <th>顧客番号</th>
             <th>顧客名</th>
             <th>建築地住所</th>
@@ -25,6 +28,9 @@
         <tbody>
         <% @projects.each do |project| %>
           <tr>
+            <% if current_user.root %>
+              <td><%= project.id %></td>
+            <% end %>
             <td><%= project.code %></td>
             <td><%= link_to project.name + ' 邸', project_path(project) %></td>
             <td><%= project.adress %></td>

@@ -8,10 +8,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">id</th>
-        <td><%= @project.id %></td>
-      </tr>
+      <% if current_user.root %>
+        <tr>
+          <th scope="row">id</th>
+          <td><%= @project.id %></td>
+        </tr>
+      <% end %>
       <tr>
         <th scope="row">顧名</th>
         <td><%= @project.name %></td>

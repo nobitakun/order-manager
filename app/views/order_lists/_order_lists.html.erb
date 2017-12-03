@@ -3,6 +3,9 @@
       <table class="table">
         <thead>
           <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
             <th>オーダーリスト名</th>
             <th></th>
           </tr>
@@ -10,6 +13,9 @@
         <tbody>
         <% order_lists.each do |order_list| %>
           <tr>
+            <% if current_user.root %>
+              <td><%= order_list.id %></td>
+            <% end %>
             <td><%= order_list.name %></td>
             <td>
               <%= link_to '詳細', order_list_path(order_list), class: 'btn btn-secondary' %>
