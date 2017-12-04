@@ -16,15 +16,21 @@
     </tr>
   </table>
   <table id="documentHeaderRight">
-    <tr>
-      <td>株式会社 サンプルコーポレーション</td>
-    </tr>
-    <tr>
-      <td>〒150-0001<br />東京都港区南青山1-2-3</td>
-    </tr>
-    <tr>
-      <td>電話番号: 0120-1234-1234</td>
-    </tr>
+    <% if Partner.exists?(id: 1) %>
+      <tr>
+        <td><%= Partner.find(1).name %></td>
+      </tr>
+      <tr>
+        <td>〒<%= Partner.find(1).postal_code %><br /><%= Partner.find(1).adress %></td>
+      </tr>
+      <tr>
+        <td>電話番号: <%= Partner.find(1).phone %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td>管理者にお問い合わせください</td>
+      </tr>
+    <% end %>
   </table>
 </div>
 
@@ -83,9 +89,9 @@
     <tr>
       <th>納入先</th>
       <% if @order.destination %>
-        <td>〒150-0001 東京都港区南青山1-2-3</td>
+        <td>〒<%= Partner.find(1).postal_code %> <%= Partner.find(1).adress %></td>
       <% else %>
-        <td><%= @order.project.adress %></td>
+        <td><%= @order.project.postal_code %> <%= @order.project.adress %></td>
       <% end %>
     </tr>
     <tr>

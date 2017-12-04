@@ -69,6 +69,7 @@ ItemCategory.create(name: '管理費 運送費')
 ItemCategory.create(name: 'その他')
 
 #発注先登録
+Partner.create(name: 'クライアント', kana: 'くらいあんと', postal_code: '150-0001', adress: '東京都渋谷区神宮前1-2-3', phone: '03-1234-5678', fax: '03-1234-5679', staff: '担当名', staff_phone: '090-9999-9999')
 Partner.create(name: '株式会社 ハヤカワ', kana: 'はやかわ', postal_code: '273-0853', adress: '船橋市金杉8丁目20-5', phone: '047-448-6711', fax: '047-448-6610', staff: '大島', staff_phone: '080-5542-0071')
 Partner.create(name: '株式会社 海山商事', kana: 'うみやましょうじ', postal_code: '150-0001', adress: '東京都渋谷区神宮前1-2-3', phone: '03-1234-5678', fax: '03-1234-5679', staff: '渡辺', staff_phone: '090-9999-9999')
 Partner.create(name: '株式会社 山川商事', kana: 'やまかわしょうじ', postal_code: '150-0022', adress: '東京都港区南青山3-3-3', phone: '03-1111-2222', fax: '03-1111-2223', staff: '斎藤', staff_phone: '090-1111-2222')
