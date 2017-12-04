@@ -91,7 +91,7 @@
       <% if @order.destination %>
         <td>〒<%= Partner.find(1).postal_code %> <%= Partner.find(1).adress %></td>
       <% else %>
-        <td><%= @order.project.postal_code %> <%= @order.project.adress %></td>
+        <td>〒<%= @order.project.postal_code %> <%= @order.project.adress %></td>
       <% end %>
     </tr>
     <tr>
