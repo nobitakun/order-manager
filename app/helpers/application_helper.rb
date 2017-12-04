@@ -21,7 +21,7 @@ module ApplicationHelper
     items.each do |item|
       text = item[:text]
       path = item[:path]
-      html += %Q(<li class="nav-item"><a href="#{path}" class="nav-link#{sidebar_activate(path)}">#{text}</a></li>)
+      html += %Q(<li class="nav-item"><a href="#{path}" class="nav-link#{sidebar_activate(path)}"><i class="fa fa-chevron-right"></i> #{text}</a></li>)
     end
       
     raw(html)
