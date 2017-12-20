@@ -12,10 +12,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= (@total = (calc_project_paid_total(@project) * 1.08.rationalize).floor).to_s(:delimited) %>円</td>
-        <td><%= @project.recipt.to_s(:delimited) %>円</td>
-        <td><%= (@gross_profit = (@project.recipt - @total)).to_s(:delimited) %>円</td>
-        <td><%= (@gross_profit.to_f / @project.recipt.to_f) * 100 %>%</td>
+        <td class="tAR"><%= (@total = (calc_project_paid_total(@project) * 1.08.rationalize).floor).to_s(:delimited) %>円</td>
+        <td class="tAR"><%= @project.recipt.to_s(:delimited) %>円</td>
+        <td class="tAR"><%= (@gross_profit = (@project.recipt - @total)).to_s(:delimited) %>円</td>
+        <td class="tAR"><%= (@gross_profit.to_f / @project.recipt.to_f) * 100 %>%</td>
       </tr>
     </tbody>
   </table>
@@ -33,23 +33,23 @@
     <tbody>
       <tr>
         <th scope="row">発注合計</th>
-        <td><%= calc_project_total(@project).to_s(:delimited) %>円</td>
+        <td class="tAR"><%= calc_project_total(@project).to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <th scope="row">発注合計(税込)</th>
-        <td><%= (total = (calc_project_total(@project) * 1.08).floor).to_s(:delimited) %>円</td>
+        <td class="tAR"><%= (total = (calc_project_total(@project) * 1.08).floor).to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <th scope="row">値引き合計</th>
-        <td><span style="color: red;">-<%= (discount = calc_project_discount(@project)).to_s(:delimited) %>円</span></td>
+        <td class="tAR"><span style="color: red;">-<%= (discount = calc_project_discount(@project)).to_s(:delimited) %>円</span></td>
       </tr>
       <tr>
         <th scope="row">値引き後発注合計(税込)</th>
-        <td><%= (total - discount).to_s(:delimited) %>円</span></td>
+        <td class="tAR"><%= (total - discount).to_s(:delimited) %>円</span></td>
       </tr>
       <tr>
         <th scope="row">支払合計</th>
-        <td><%= calc_project_paid_total(@project).to_s(:delimited) %>円</td>
+        <td class="tAR"><%= calc_project_paid_total(@project).to_s(:delimited) %>円</td>
       </tr>
     </tbody>
   </table>

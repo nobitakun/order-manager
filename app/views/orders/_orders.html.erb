@@ -27,8 +27,8 @@
           <% end %>
             <td><%= order.name %></td>
             <td><%= order.document_date %></td>
-            <td><%= calc_total(order).to_s(:delimited) %>円</td>
-            <td><%= calc_paid_total(order).to_s(:delimited) %>円</td>
+            <td class="tAR"><%= calc_total(order).to_s(:delimited) %>円</td>
+            <td class="tAR"><%= calc_paid_total(order).to_s(:delimited) %>円</td>
             <td>
               <%= link_to '詳細', order_path(order), class: 'btn btn-secondary' %>
               <%= link_to '編集', edit_order_path(order), class: 'btn btn-warning' %>
