@@ -14,7 +14,7 @@
   
   <div class="form-group">
     <%= f.label :unit, '単位' %>
-    <%= f.select :unit, [['㎡', '㎡'], ['枚', '枚'], ['個', '個'], ['本', '本']], { prompt: "未選択" }, { class: 'form-control' } %>
+    <%= f.select :unit, [['㎡', '㎡'], ['枚', '枚'], ['個', '個'], ['本', '本'], ['件', '件'], ['m', 'm'], ['立米', '立米'], ['式', '式'], ['束', '束'], ['坪', '坪'], ['畳', '畳']], { prompt: "未選択" }, { class: 'form-control' } %>
   </div>
   
   <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>

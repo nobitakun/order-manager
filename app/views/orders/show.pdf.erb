@@ -18,7 +18,7 @@
   <table id="documentHeaderRight">
     <% if Partner.exists?(id: 1) %>
       <tr>
-        <td><%= Partner.find(1).name %></td>
+        <td style="font-size: 20px;"><%= Partner.find(1).name %></td>
       </tr>
       <tr>
         <td>〒<%= Partner.find(1).postal_code %><br /><%= Partner.find(1).adress %></td>
@@ -55,7 +55,6 @@
   <table id="orderDetail">
     <thead>
       <tr>
-        <th>カテゴリ</th>
         <th>部材名</th>
         <th>単位</th>
         <th>単価</th>
@@ -68,7 +67,6 @@
     <tbody>
     <% @order.line_items.each do |line_item| %>
       <tr>
-        <td><%= line_item.item.item_category.name %></td>
         <td><%= line_item.item.name %></td>
         <td><%= line_item.item.unit %></td>
         <td><%= line_item.unit_price.to_s(:delimited) %></td>

@@ -28,6 +28,18 @@
   </div>
   
   <div class="form-group">
+    <%= f.label :owner_phone, 'ご主人携帯電話番号' %>
+    <%= f.text_field :owner_phone, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :mrs_phone, '奥様携帯番号' %>
+    <%= f.text_field :mrs_phone, class: 'form-control' %>
+  </div>
+  
+  <hr />
+  
+  <div class="form-group">
     <%= f.label :postal_code, '建築地郵便番号' %>
     <%= f.text_field :postal_code, class: 'form-control' %>
   </div>
@@ -40,11 +52,6 @@
   <div class="form-group">
     <%= f.label :phone, '建築地固定電話' %>
     <%= f.text_field :phone, class: 'form-control' %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :owner_phone, 'ご主人携帯電話番号' %>
-    <%= f.text_field :owner_phone, class: 'form-control' %>
   </div>
   
   <div class="form-group">

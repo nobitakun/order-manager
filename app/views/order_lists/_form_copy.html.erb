@@ -13,14 +13,8 @@
   <hr />
 
 <%= form_for(@old_order_list) do |f| %>
-  <h2>部材登録</h2>
+  <h2>部材リスト</h2>
   
-  <%= link_to_add_association '明細を追加', f, :line_items,
-    class: 'btn btn-default',
-    data: {
-      association_insertion_node: '#detail-association-insertion-point',
-      association_insertion_method: 'append' }
-   %>
   <div class="table-responsive">
     <table class="table">
       <thead>

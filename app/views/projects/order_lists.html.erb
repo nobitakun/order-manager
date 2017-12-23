@@ -1,4 +1,24 @@
 <h1><%= @project.name %> 邸の発注管理</h1>
+
+<h2>発注リスト一覧</h2>
+
+<section>
+  <%= render 'order_lists/order_lists', order_lists: @project.order_lists %>
+  <%= link_to '発注リスト新規作成', new_order_list_path(@project.id), class: 'btn btn-lg btn-primary light-blue' %>
+</section>
+
+<h2>発注書一覧</h2>
+
+<section>
+  <%= render 'orders/orders', orders: @project.orders %>
+  <%= link_to '今回の発注', new_order_path(@project.id), class: 'btn btn-lg btn-primary' %>
+</section>
+
+<h2>発注部材一覧</h2>
+<section>
+  <%= render 'line_items/line_items', line_items: @project.line_items %>
+</section>
+
 <section>
   <h2>発注サマリー</h2>
   <table class="table table-bordered">
@@ -53,23 +73,4 @@
       </tr>
     </tbody>
   </table>
-</section>
-
-<h2>オーダーリスト一覧</h2>
-
-<section>
-  <%= render 'order_lists/order_lists', order_lists: @project.order_lists %>
-  <%= link_to 'オーダーリスト新規作成', new_order_list_path(@project.id), class: 'btn btn-lg btn-primary' %>
-</section>
-
-<h2>発注書一覧</h2>
-
-<section>
-  <%= render 'orders/orders', orders: @project.orders %>
-  <%= link_to '発注書新規作成', new_order_path(@project.id), class: 'btn btn-lg btn-primary' %>
-</section>
-
-<h2>発注部材一覧</h2>
-<section>
-  <%= render 'line_items/line_items', line_items: @project.line_items %>
 </section>

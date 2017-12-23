@@ -20,7 +20,7 @@ class OrderListsController < ApplicationController
     @project = Project.find(order_list_params[:project_id])
     
     if @order_list.save
-      flash[:success] = 'オーダーリストを登録しました'
+      flash[:success] = '発注リストを登録しました'
       redirect_to order_lists_project_url(id: @order_list.project_id)
     else
       render :new
@@ -34,7 +34,7 @@ class OrderListsController < ApplicationController
   def update
     @project = Project.find(update_order_list_params[:project_id])
     if @order_list.update(update_order_list_params)
-      flash[:success] = 'オーダーリストを編集しました'
+      flash[:success] = '発注リストを編集しました'
       redirect_to order_lists_project_url(id: @order_list.project_id)
     else
       render :edit
@@ -43,7 +43,7 @@ class OrderListsController < ApplicationController
   
   def destroy
     @order_list.destroy
-    flash[:success] = 'オーダーリストを削除しました'
+    flash[:success] = '発注リストを削除しました'
     redirect_to order_lists_project_url(id: @order_list.project_id)
   end
   
@@ -65,10 +65,10 @@ class OrderListsController < ApplicationController
         item = item.attributes.compact
         LineItem.create!(item)
       end
-      flash[:success] = 'オーダーリストを複製しました'
+      flash[:success] = '発注リストを複製しました'
       redirect_to order_lists_project_url(@order_list.project_id)
     else
-      flash.now[:danger] = 'オーダーリストの複製に失敗しました'
+      flash.now[:danger] = '発注リストの複製に失敗しました'
       render :copy_set
     end
   end

@@ -73,5 +73,5 @@
   <%= link_to 'この顧客の発注管理へ', order_lists_project_path(id: @order.project_id), class: 'btn btn-lg btn-secondary' %>
   <%= link_to '編集', edit_order_path(@order), class: 'btn btn-lg btn-warning' %>
   <%= link_to '削除', @order, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
-  <%= link_to 'PDF', request.path_info + '.pdf', class: 'btn btn-lg btn-info' %>
+  <%= link_to '発注書発行（PDF）', request.path_info + '.pdf', class: 'btn btn-lg btn-info' %>
 </section>
