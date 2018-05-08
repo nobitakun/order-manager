@@ -1,7 +1,8 @@
 class OrderListsController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_order_list, only: [:show, :edit, :update, :destroy, :copy]
-  before_action :set_partner_order_kana, only: [:new, :create, :edit, :update, :copy_set, :copy]
+  before_action :set_partners_order_kana, only: [:new, :create, :edit, :update, :copy_set, :copy]
+  before_action :set_items_order_kana, only: [:new, :create, :edit, :update, :copy_set, :copy]
   
   def index
   end
@@ -97,7 +98,12 @@ class OrderListsController < ApplicationController
     params.require(:order_list).permit(:name, :project_id, line_items_attributes: [:id, :quantity, :delivery_date, :remark, :item_id, :paid, :unit_price, :partner_id, :_destroy])
   end
   
-  def set_partner_order_kana
+  def set_partners_order_kana
     @partners = Partner.order(:kana)
   end
+  
+  def set_items_order_kana
+    @items = Item.order(:kana)
+  end
+    
 end
