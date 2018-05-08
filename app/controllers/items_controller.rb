@@ -39,9 +39,9 @@ class ItemsController < ApplicationController
   
   def ajax_select
     if params[:value].present?
-      @items = Item.where(item_category_id: params[:value])
+      @items = Item.where(item_category_id: params[:value]).order('kana DESC')
     else
-      @items = Item.all
+      @items = Item.all.order('kana DESC')
     end
     
     @line_item_object_id = params[:line_item_object_id]
