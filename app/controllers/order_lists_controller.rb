@@ -98,6 +98,6 @@ class OrderListsController < ApplicationController
   end
   
   def set_partner_order_kana
-    @partner = Partner.order(:kana)
+    @partners = Partner.order(:kana)
   end
 end

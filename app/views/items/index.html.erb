@@ -16,6 +16,7 @@
               <th>ID</th>
             <% end %>
             <th>名前</th>
+            <th>よみがな</th>
             <th>カテゴリー</th>
             <th>発注単位</th>
             <th></th>
@@ -28,6 +29,7 @@
               <td><%= item.id %></td>
             <% end %>
             <td><%= item.name %></td>
+            <td><%= item.kana %></td>
             <td><%= item.item_category.name %></td>
             <td><%= item.unit %></td>
             <td>
