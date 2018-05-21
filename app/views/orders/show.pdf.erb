@@ -73,11 +73,11 @@
     <% @order.line_items.each do |line_item| %>
       <tr>
         <td><%= line_item.item.name %></td>
-        <td style="text-align: center;"><%= line_item.item.unit %></td>
-        <td style="text-align: center;"><%= line_item.unit_price.to_s(:delimited) %></td>
-        <td style="text-align: center;"><%= line_item.quantity %></td>
-        <td style="text-align: center;"><%= calc_sub_total(line_item).to_s(:delimited) %></td>
-        <td style="text-align: center;"><%= line_item.delivery_date %></td>
+        <td style="text-align: right;"><%= line_item.item.unit %></td>
+        <td style="text-align: right;"><%= line_item.unit_price.to_s(:delimited) %></td>
+        <td style="text-align: right;"><%= line_item.quantity %></td>
+        <td style="text-align: right;"><%= calc_sub_total(line_item).to_s(:delimited) %></td>
+        <td style="text-align: right;"><%= line_item.delivery_date %></td>
         <td><%= line_item.remark %></td>
       </tr>
     <% end %>
