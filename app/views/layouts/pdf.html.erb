@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OrderManager</title>
+    <title>発注書</title>
     <%= csrf_meta_tags %>
     
     <%#= wicked_pdf_stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -20,7 +20,7 @@ html {
 }
 
 body{
-  font-size: 13px;
+  font-size: 13px
 }
 
 table{
@@ -33,6 +33,11 @@ h1{
   border-bottom: 3px double #333;
   padding: 0 0 12px 0;
   margin-bottom: 40px;
+}
+
+#documentWrap{
+  position: relative;
+  min-height: 840px;
 }
 
 #documentHeaderWrap{
@@ -125,6 +130,18 @@ h1{
   padding: 4px 8px;
   border: 1px solid #666;
   text-align: right;
+}
+
+#documentStamp{
+  clear: both;
+  position: absolute;
+  bottom: -90px;
+  right: 0;
+}
+
+#documentStamp tr td{
+  border: 1px solid #666;
+  padding: 30px;
 }
 </style>
     

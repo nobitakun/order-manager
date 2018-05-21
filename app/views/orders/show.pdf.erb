@@ -1,5 +1,7 @@
 <h1>発　注　書</h1>
 
+<div id="documentWrap">
+
 <div id="documentHeaderWrap" class="clearfix">
   <table id="documentHeaderLeft">
     <tr>
@@ -16,24 +18,24 @@
     </tr>
   </table>
   <table id="documentHeaderRight">
-    <% if Partner.exists?(id: 1) %>
-      <tr>
-        <td style="font-size: 20px;"><%= Partner.find(1).name %></td>
-      </tr>
-      <tr>
-        <td>〒<%= Partner.find(1).postal_code %><br /><%= Partner.find(1).adress %></td>
-      </tr>
-      <tr>
-        <td>電話番号: <%= Partner.find(1).phone %></td>
-      </tr>
-      <tr>
-        <td>FAX話番号: <%= Partner.find(1).fax %></td>
-      </tr>
-    <% else %>
-      <tr>
-        <td>管理者にお問い合わせください</td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= image_tag('sw_logo.jpg', class: 'sw_logo_pdf') %></td>
+    </tr>
+    <tr>
+      <td style="font-size: 20px;">有限会社 ウッディ伊藤</td>
+    </tr>
+    <tr>
+      <td>〒274-0053 千葉県船橋市豊富町718</td>
+    </tr>
+    <tr>
+      <td>TEL: 047-468-8855</td>
+    </tr>
+    <tr>
+      <td>FAX: 047-457-7499</td>
+    </tr>
+    <tr>
+      <td>http://sweden-standard.com/</td>
+    </tr>
   </table>
 </div>
 
@@ -71,11 +73,11 @@
     <% @order.line_items.each do |line_item| %>
       <tr>
         <td><%= line_item.item.name %></td>
-        <td><%= line_item.item.unit %></td>
-        <td><%= line_item.unit_price.to_s(:delimited) %></td>
-        <td><%= line_item.quantity %></td>
-        <td><%= calc_sub_total(line_item).to_s(:delimited) %></td>
-        <td><%= line_item.delivery_date %></td>
+        <td style="text-align: center;"><%= line_item.item.unit %></td>
+        <td style="text-align: center;"><%= line_item.unit_price.to_s(:delimited) %></td>
+        <td style="text-align: center;"><%= line_item.quantity %></td>
+        <td style="text-align: center;"><%= calc_sub_total(line_item).to_s(:delimited) %></td>
+        <td style="text-align: center;"><%= line_item.delivery_date %></td>
         <td><%= line_item.remark %></td>
       </tr>
     <% end %>
@@ -126,4 +128,14 @@
     <% end %>
   </table>
   
+  <table id="documentStamp">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  
+</div>
+
 </div>

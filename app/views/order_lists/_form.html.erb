@@ -20,12 +20,6 @@
   
   <h2>部材登録</h2>
   
-  <%= link_to_add_association '部材追加', f, :line_items,
-    class: 'btn btn-primary',
-    data: {
-      association_insertion_node: '#detail-association-insertion-point',
-      association_insertion_method: 'append' }
-   %>
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -71,6 +65,13 @@
       </script>
     </table>
   </div>
+  
+  <%= link_to_add_association '部材追加', f, :line_items,
+    class: 'btn btn-primary add-btn',
+    data: {
+      association_insertion_node: '#detail-association-insertion-point',
+      association_insertion_method: 'append' }
+   %>
 
   <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
 <% end %>
