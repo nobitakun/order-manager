@@ -37,7 +37,7 @@
       <td>http://sweden-standard.com/</td>
     </tr>
   </table>
-</div>
+
 
 <table id="partnerTable">
   <% if @order.partners.any? %>
@@ -55,6 +55,9 @@
   </tr>
   <% end %>
 </table>
+
+</div>
+
 
 <% if @order.line_items.any? %>
   <table id="orderDetail">
