@@ -1,4 +1,4 @@
-<h1>発　注　書</h1>
+<h1>請求書</h1>
 
 <div id="documentWrap">
 
@@ -95,7 +95,7 @@
     <tr>
       <th>納入先</th>
       <% if @order.destination %>
-        <td>〒274-0053 千葉県船橋市豊富町718</td>
+        <td>〒<%= Partner.find(1).postal_code %> <%= Partner.find(1).adress %></td>
       <% else %>
         <td>〒<%= @order.project.postal_code %> <%= @order.project.adress %></td>
       <% end %>

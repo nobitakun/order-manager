@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create, :edit, :update, :destroy] do
     member do
       get :line_items
+      get 'document'
     end
   end
   

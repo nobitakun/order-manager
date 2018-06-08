@@ -1,11 +1,23 @@
 class OrdersController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :document]
   
   def index
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'detail',                       
+               encording: 'UTF-8',                  
+               layout: 'pdf.html',                  
+               show_as_html: params[:debug].present?
+      end
+    end
+  end
+  
+  def document
     respond_to do |format|
       format.html
       format.pdf do
